@@ -1,7 +1,7 @@
 .home__container {
 
 }
-
+/*=============== Header ===============*/
 .header {
     position: fixed;
     top: 0;
@@ -25,13 +25,44 @@
     align-items: center;
 }
 
+/*=============== Navigation ===============*/
 .header__navigation {
     height: 100%;
 }
+
+.header__navlist {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.header__navkey {
+    height: 100%;
+}
+.header__navlink {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    color: #515767;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial!important;
+}
+
+.header__banner {
+    height: 100%;
+    width: 139px;
+    display: flex;
+    align-items: center;
+}
+
 .header__logo {
     width: 107px;
     height: 22px;
 }
+
 
 
 .header__bottom {
@@ -39,10 +70,13 @@
     background-color: #fff;
     color: #000;
 }
-
+/*=============== MAIN ===============*/
 .main {
     margin: 100px auto 0;
-    max-width: 60rem;
+    max-width: 1140px;
+    display: grid;
+    grid-template-columns: 820px 300px;
+    grid-column-gap: 20px;
 }
 
 
@@ -73,4 +107,14 @@
 .table__of__contents {
     padding: 8px;
     margin-bottom: 16px;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media (max-width: 1000px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+    .main__right {
+        display: none;
+    }
 }
