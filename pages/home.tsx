@@ -1,11 +1,64 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
-import {Box, Tab} from "@mui/material";
+import {Box, styled, Tab, Tabs} from "@mui/material";
 import { TabList, TabContext, TabPanel } from '@mui/lab';
 
 // import { Article } from './types';
 
+
+const AntTabs = styled(Tabs)({
+  borderBottom: '1px solid #e8e8e8',
+  '& .MuiTabs-indicator': {
+    backgroundColor: '#1890ff',
+  },
+});
+
+interface StyledTabsProps {
+  children?: React.ReactNode;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+interface StyledTabProps {
+  label: string;
+}
+
+const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: 'none',
+    minWidth: 0,
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 0,
+    },
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(1),
+    color: 'rgba(0, 0, 0, 0.85)',
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      color: '#40a9ff',
+      opacity: 1,
+    },
+    '&.Mui-selected': {
+      color: '#1890ff',
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: '#d1eaff',
+    },
+  }),
+);
 
 
 interface Props {}
@@ -98,15 +151,14 @@ const Home: React.FC<Props> = () => {
         </div>
         {/* =============== Bottom Header =============== */}
         <div className={styles.header__bottom}>
-          <TabContext value={currentTab}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <TabList onChange={handleTabSwitch} aria-label="menu tab">
-                {menu_bottom.map((word, index) => (
-                  <Tab label={word} value={word} key={index}/>
-                ))}
-              </TabList>
-            </Box>
-          </TabContext>
+          <Box sx={{ bgcolor: '#fff' }}>
+            <AntTabs value={currentTab} onChange={handleTabSwitch} aria-label="ant example">
+              {menu_bottom.map((word, index) => (
+                <AntTab label={word} key={index} sx={{fontSize: 14, paddingX: "12px", paddingY: 0}}/>
+              ))}
+            </AntTabs>
+            <Box sx={{ p: 3 }} />
+          </Box>
         </div>
       </header>
       <main className={styles.main}>

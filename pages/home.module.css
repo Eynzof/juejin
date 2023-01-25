@@ -70,6 +70,13 @@
     background-color: #fff;
     color: #000;
 }
+
+.header__bottom__tabkey {
+    font-size: 14px;
+    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial!important;
+    padding: 0;
+}
+
 /*=============== MAIN ===============*/
 .main {
     margin: 100px auto 0;
