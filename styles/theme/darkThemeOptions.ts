@@ -1,12 +1,12 @@
 import { ThemeOptions } from '@mui/material/styles';
-import {amber} from "@mui/material/colors";
+import {deepOrange} from "@mui/material/colors";
 
-const lightThemeOptions: ThemeOptions = {
+const darkThemeOptions: ThemeOptions = {
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#ff4400',
+      main: '#000000',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
@@ -38,4 +38,4 @@ const lightThemeOptions: ThemeOptions = {
   },
 };
 
-export default lightThemeOptions;
+export default darkThemeOptions;
