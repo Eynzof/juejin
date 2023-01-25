@@ -9,7 +9,7 @@ const Home: React.FC<Props> = () => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
 
-  const words = [
+  const menu_top = [
     "首页",
     "沸点",
     "课程上新",
@@ -19,6 +19,19 @@ const Home: React.FC<Props> = () => {
     "商城",
     "APP",
     "插件",
+  ];
+
+  const menu_bottom = [
+    "综合",
+    "关注",
+    "后端",
+    "前端",
+    "Android",
+    "iOS",
+    "人工智能",
+    "开发工具",
+    "代码人生",
+    "阅读",
   ];
 
   useEffect(() => {
@@ -44,7 +57,7 @@ const Home: React.FC<Props> = () => {
             headerCollapsed ? styles.collapsed : ""
           }`}
         >
-          {/* header top content */}
+          {/* =============== Top Header =============== */}
           <div className={styles.header__container}>
             <img
               src="/juejin_logo.svg"
@@ -53,7 +66,7 @@ const Home: React.FC<Props> = () => {
             />
             <div className={styles.header__navigation}>
               <div className={styles.header__navlist}>
-                {words.map((word, index) => (
+                {menu_top.map((word, index) => (
                   <div key={index} className={styles.header__navkey}>
                     <a href="" className={styles.header__navlink}>
                       {word}
@@ -72,9 +85,10 @@ const Home: React.FC<Props> = () => {
             </div>
           </div>
         </div>
+        {/* =============== Bottom Header =============== */}
         <div className={styles.header__bottom}>
           Header Bottom
-          {/* header bottom content */}
+
         </div>
       </header>
       <main className={styles.main}>
