@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
+import {Box, Tab} from "@mui/material";
+import { TabList, TabContext, TabPanel } from '@mui/lab';
+
 // import { Article } from './types';
+
+
 
 interface Props {}
 
 const Home: React.FC<Props> = () => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
+
+  const [currentTab, setCurrentTab] = useState("综合");
 
   const menu_top = [
     "首页",
@@ -49,6 +56,10 @@ const Home: React.FC<Props> = () => {
     }
   };
 
+  const handleTabSwitch = (event: React.SyntheticEvent, newValue: string) => {
+    setCurrentTab(newValue);
+  }
+
   return (
     <div className={styles.home__container}>
       <header className={styles.header}>
@@ -81,14 +92,21 @@ const Home: React.FC<Props> = () => {
                   />
                 </div>
               </div>
-              <div className={styles.header__rightside}>aaa</div>
+              <div className={styles.header__rightside}>HEADER</div>
             </div>
           </div>
         </div>
         {/* =============== Bottom Header =============== */}
         <div className={styles.header__bottom}>
-          Header Bottom
-
+          <TabContext value={currentTab}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <TabList onChange={handleTabSwitch} aria-label="menu tab">
+                {menu_bottom.map((word, index) => (
+                  <Tab label={word} value={word} key={index}/>
+                ))}
+              </TabList>
+            </Box>
+          </TabContext>
         </div>
       </header>
       <main className={styles.main}>

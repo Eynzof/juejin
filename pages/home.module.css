@@ -28,6 +28,8 @@
 /*=============== Navigation ===============*/
 .header__navigation {
     height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .header__navlist {
