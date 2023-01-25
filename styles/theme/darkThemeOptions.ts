@@ -11,12 +11,13 @@ const darkThemeOptions: ThemeOptions = {
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     background: {
-      default: '#fff',
+      default: '#181818',
+      paper: '#121212'
     },
     text: {
-      primary: "#1d2129",
-      secondary: "#4e5969",
-      disabled: "#71777c",
+      primary: "#ffffff",
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
     },
     contrastThreshold: 3,
     // Used by the functions below to shift a color's luminance by approximately

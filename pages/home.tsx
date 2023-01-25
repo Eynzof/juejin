@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import {Box, Button, styled, Tab, Tabs} from "@mui/material";
-import { TabList, TabContext, TabPanel } from '@mui/lab';
-
+import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
 // import { Article } from './types';
 
-
 const AntTabs = styled(Tabs)({
-  borderBottom: '1px solid #e8e8e8',
-  '& .MuiTabs-indicator': {
-    backgroundColor: '#1890ff',
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#1890ff",
   },
 });
 
@@ -24,41 +19,38 @@ interface StyledTabProps {
   label: string;
 }
 
-const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(
-  ({ theme }) => ({
-    textTransform: 'none',
+const AntTab = styled((props: StyledTabProps) => (
+  <Tab disableRipple {...props} />
+))(({ theme }) => ({
+  textTransform: "none",
+  minWidth: 0,
+  [theme.breakpoints.up("sm")]: {
     minWidth: 0,
-    [theme.breakpoints.up('sm')]: {
-      minWidth: 0,
-    },
-    fontWeight: theme.typography.fontWeightRegular,
-    marginRight: theme.spacing(1),
-    color: theme.palette.text.disabled,
-    fontFamily: theme.typography.fontFamily,
-    '&:hover': {
-      color: '#40a9ff',
-      opacity: 1,
-    },
-    '&.Mui-selected': {
-      color: '#1890ff',
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    '&.Mui-focusVisible': {
-      backgroundColor: '#d1eaff',
-    },
-  }),
-);
-
-
+  },
+  fontWeight: theme.typography.fontWeightRegular,
+  marginRight: theme.spacing(1),
+  color: theme.palette.text.disabled,
+  fontFamily: theme.typography.fontFamily,
+  "&:hover": {
+    color: "#40a9ff",
+    opacity: 1,
+  },
+  "&.Mui-selected": {
+    color: "#1890ff",
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  "&.Mui-focusVisible": {
+    backgroundColor: "#d1eaff",
+  },
+}));
 
 type HomeProps = {
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
-}
+};
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
-
   const [currentTab, setCurrentTab] = useState(0);
 
   const menu_top = [
@@ -103,11 +95,11 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
   const handleTabSwitch = (event: React.SyntheticEvent, newValue: number) => {
     setCurrentTab(newValue);
-  }
+  };
 
   return (
     <div className={styles.home__container}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <div
           className={`${styles.header__top} ${
             headerCollapsed ? styles.collapsed : ""
@@ -120,14 +112,18 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               alt="Logo"
               className={styles.header__logo}
             />
-            <div className={styles.header__navigation} >
+            <div className={styles.header__navigation}>
               <div className={styles.header__navlist}>
                 {menu_top.map((word, index) => (
-                  <div key={index} className={styles.header__navkey}>
-                    <a href="" className={styles.header__navlink}>
+                  <Box sx={{ color: "text.default" }} key={index}>
+                    <Link
+                      href="/"
+                      className={styles.header__navlink}
+                      sx={{ color: "text.secondary" }}
+                    >
                       {word}
-                    </a>
-                  </div>
+                    </Link>
+                  </Box>
                 ))}
                 <div className={styles.header__banner}>
                   <img
@@ -138,27 +134,44 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 </div>
               </div>
               <div className={styles.header__rightside}>
-                <Button
-                onClick={props.toggleTheme}
-                color={'info'}
-              >
-                Toggle Theme
-              </Button>
+                <Button onClick={props.toggleTheme} color={"info"}>
+                  Toggle Theme
+                </Button>
               </div>
             </div>
           </div>
         </div>
         {/* =============== Bottom Header =============== */}
         <div className={styles.header__bottom}>
-          <Box sx={{ bgcolor: '#fff' }}>
-            <AntTabs value={currentTab} onChange={handleTabSwitch} aria-label="ant example">
+          <Box width={720}>
+            <Tabs
+              value={currentTab}
+              onChange={handleTabSwitch}
+              aria-label="ant example"
+            >
               {menu_bottom.map((word, index) => (
-                <AntTab label={word} key={index} sx={{fontSize: 14, paddingX: "12px", paddingY: 0}}/>
+                <AntTab
+                  label={word}
+                  key={index}
+                  sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
+                />
               ))}
-            </AntTabs>
+            </Tabs>
+          </Box>
+          <Box
+            width={240}
+            sx={{
+              fontSize: 14,
+              paddingY: 0,
+              color: "text.disabled",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <p>标签管理</p>
           </Box>
         </div>
-      </header>
+      </div>
       <main className={styles.main}>
         <div className={styles.main__left}>
           <div>

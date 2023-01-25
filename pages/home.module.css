@@ -12,8 +12,6 @@
 
 .header__top {
     height: 60px;
-    background-color: #fff;
-    color: #909090;
 }
 
 .header__container {
@@ -37,20 +35,15 @@
     flex-direction: row;
     height: 100%;
 }
-.header__navkey {
-    height: 100%;
-}
 .header__navlink {
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
-    color: #515767;
+    padding: 0 14px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     transition: all 0.3s ease;
-    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial!important;
 }
 
 .header__banner {
@@ -65,10 +58,11 @@
     height: 22px;
 }
 
+
 .header__bottom {
     height: 46px;
-    background-color: #fff;
-    color: #000;
+    display: flex;
+    justify-content: center;
 }
 
 .header__bottom__tabkey {
@@ -80,9 +74,9 @@
 /*=============== MAIN ===============*/
 .main {
     margin: 100px auto 0;
-    max-width: 1140px;
+    max-width: 960px;
     display: grid;
-    grid-template-columns: 820px 300px;
+    grid-template-columns: 700px 240px;
     grid-column-gap: 20px;
 }
 
@@ -95,7 +89,6 @@
 /*}*/
 
 .collapsed {
-
     height: 0;
     overflow: hidden;
 }
@@ -106,7 +99,6 @@
 
 .main__right {
     padding: 16px;
-    background-color: #f2f2f2;
 }
 
 .author__info,
