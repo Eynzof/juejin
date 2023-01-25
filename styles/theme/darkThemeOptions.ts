@@ -6,9 +6,17 @@ const darkThemeOptions: ThemeOptions = {
     mode: 'dark',
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#000000',
+      main: '#1e80ff',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    background: {
+      default: '#fff',
+    },
+    text: {
+      primary: "#1d2129",
+      secondary: "#4e5969",
+      disabled: "#71777c",
     },
     contrastThreshold: 3,
     // Used by the functions below to shift a color's luminance by approximately

@@ -39,14 +39,21 @@
     --juejin-layer-3-border: #e4e6eb;
     --juejin-layer-4-dropdown: #fff;
     --juejin-layer-5: #fff;
+
+
+
     --juejin-brand-1-normal: #1e80ff;
     --juejin-brand-2-hover: #1171ee;
     --juejin-brand-3-click: #0060dd;
     --juejin-brand-4-disable: #abcdff;
     --juejin-brand-5-light: #eaf2ff;
+
+
+
     --juejin-mask-1: rgba(0,0,0,0.4);
     --juejin-mask-2: #fff;
     --juejin-mask-3: none;
+
     --juejin-brand-fill1-normal: rgba(30,128,255,0.05);
     --juejin-brand-fill2-hover: rgba(30,128,255,0.1);
     --juejin-brand-fill3-click: rgba(30,128,255,0.2);
@@ -54,10 +61,12 @@
     --juejin-brand-stroke2-hover: rgba(30,128,255,0.45);
     --juejin-brand-stroke3-click: rgba(30,128,255,0.6);
     --juejin-font_danger: #ff5132;
+
     --juejin-font-1: #252933;
     --juejin-font-2: #515767;
     --juejin-font-3: #8a919f;
     --juejin-font-4: #c2c8d1;
+
     --juejin-font-brand1-normal: #1e80ff;
     --juejin-font-brand2-hover: #1171ee;
     --juejin-font-brand3-click: #0060dd;

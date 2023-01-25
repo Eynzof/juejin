@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Home.module.css";
-import {Box, styled, Tab, Tabs} from "@mui/material";
+import {Box, Button, styled, Tab, Tabs} from "@mui/material";
 import { TabList, TabContext, TabPanel } from '@mui/lab';
 
 // import { Article } from './types';
@@ -33,19 +33,8 @@ const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} /
     },
     fontWeight: theme.typography.fontWeightRegular,
     marginRight: theme.spacing(1),
-    color: 'rgba(0, 0, 0, 0.85)',
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    color: theme.palette.text.disabled,
+    fontFamily: theme.typography.fontFamily,
     '&:hover': {
       color: '#40a9ff',
       opacity: 1,
@@ -61,13 +50,16 @@ const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} /
 );
 
 
-interface Props {}
 
-const Home: React.FC<Props> = () => {
+type HomeProps = {
+  toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const Home: React.FC<HomeProps> = (props: HomeProps) => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
 
-  const [currentTab, setCurrentTab] = useState("综合");
+  const [currentTab, setCurrentTab] = useState(0);
 
   const menu_top = [
     "首页",
@@ -109,7 +101,7 @@ const Home: React.FC<Props> = () => {
     }
   };
 
-  const handleTabSwitch = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabSwitch = (event: React.SyntheticEvent, newValue: number) => {
     setCurrentTab(newValue);
   }
 
@@ -128,7 +120,7 @@ const Home: React.FC<Props> = () => {
               alt="Logo"
               className={styles.header__logo}
             />
-            <div className={styles.header__navigation}>
+            <div className={styles.header__navigation} >
               <div className={styles.header__navlist}>
                 {menu_top.map((word, index) => (
                   <div key={index} className={styles.header__navkey}>
@@ -145,7 +137,14 @@ const Home: React.FC<Props> = () => {
                   />
                 </div>
               </div>
-              <div className={styles.header__rightside}>HEADER</div>
+              <div className={styles.header__rightside}>
+                <Button
+                onClick={props.toggleTheme}
+                color={'info'}
+              >
+                Toggle Theme
+              </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -157,7 +156,6 @@ const Home: React.FC<Props> = () => {
                 <AntTab label={word} key={index} sx={{fontSize: 14, paddingX: "12px", paddingY: 0}}/>
               ))}
             </AntTabs>
-            <Box sx={{ p: 3 }} />
           </Box>
         </div>
       </header>
