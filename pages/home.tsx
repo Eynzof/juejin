@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
+import { gql } from "@apollo/client";
+import client from "../api/apollo-client";
 // import { Article } from './types';
 
 const AntTabs = styled(Tabs)({
@@ -45,13 +47,25 @@ const AntTab = styled((props: StyledTabProps) => (
 }));
 
 type HomeProps = {
+  menus: NavigationItems;
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
 };
+
+interface NavigationItem {
+  name: string;
+  url: string;
+  isActive: boolean;
+}
+
+type NavigationItems = NavigationItem[];
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
+
+  const menus = props.menus;
+  console.log(menus);
 
   const menu_top = [
     "首页",
@@ -114,14 +128,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             />
             <div className={styles.header__navigation}>
               <div className={styles.header__navlist}>
-                {menu_top.map((word, index) => (
+                {menus.map((menu, index) => (
                   <Box sx={{ color: "text.default" }} key={index}>
                     <Link
-                      href="/"
+                      href={menu.url}
                       className={styles.header__navlink}
                       sx={{ color: "text.secondary" }}
                     >
-                      {word}
+                      {menu.name}
                     </Link>
                   </Box>
                 ))}
@@ -237,3 +251,26 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query Menu {
+        menu(locale: "zh-CN") {
+          data {
+            attributes {
+              data
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  // console.log(data.menu.data.attributes.data);
+  return {
+    props: {
+      menus: data.menu.data.attributes.data,
+    },
+  };
+}
