@@ -162,6 +162,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               value={currentTab}
               onChange={handleTabSwitch}
               aria-label="ant example"
+              sx={{ backgroundColor: "background.default" }}
             >
               {menu_bottom.map((word, index) => (
                 <AntTab
