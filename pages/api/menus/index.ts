@@ -41,7 +41,8 @@ export const getTaggedMenus = async () => {
     const { data } = await client.query({
       query: MENU_TAGGED_QUERY,
     });
-    return data.menu.data.attributes.data;
+
+    return data.menuTagged.data.attributes.data;
   } catch (error) {
     throw new Error(error);
   }

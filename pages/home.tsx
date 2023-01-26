@@ -68,32 +68,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
   const menus = props.menus;
   const tagged_menus = props.tagged_menus
-  console.log(menus);
-
-  const menu_top = [
-    "首页",
-    "沸点",
-    "课程上新",
-    "直播",
-    "活动",
-    "竞赛",
-    "商城",
-    "APP",
-    "插件",
-  ];
-
-  const menu_bottom = [
-    "综合",
-    "关注",
-    "后端",
-    "前端",
-    "Android",
-    "iOS",
-    "人工智能",
-    "开发工具",
-    "代码人生",
-    "阅读",
-  ];
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -167,9 +141,9 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               aria-label="ant example"
               sx={{ backgroundColor: "background.default" }}
             >
-              {menu_bottom.map((word, index) => (
+              {tagged_menus.map((menu, index) => (
                 <AntTab
-                  label={word}
+                  label={menu.name}
                   key={index}
                   sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
                 />
