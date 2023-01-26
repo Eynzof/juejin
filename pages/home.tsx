@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
 import { gql } from "@apollo/client";
 import client from "../api/apollo-client";
+import {getPrimaryMenus, getTaggedMenus} from "./api/menus";
 // import { Article } from './types';
 
 const AntTabs = styled(Tabs)({
@@ -49,6 +50,7 @@ const AntTab = styled((props: StyledTabProps) => (
 type HomeProps = {
   menus: NavigationItems;
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
+  tagged_menus: any;
 };
 
 interface NavigationItem {
@@ -65,6 +67,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const menus = props.menus;
+  const tagged_menus = props.tagged_menus
   console.log(menus);
 
   const menu_top = [
@@ -254,24 +257,13 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 export default Home;
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query Menu {
-        menu(locale: "zh-CN") {
-          data {
-            attributes {
-              data
-            }
-          }
-        }
-      }
-    `,
-  });
+  const menus = await getPrimaryMenus()
+  const tagged_menus = await getTaggedMenus()
 
-  // console.log(data.menu.data.attributes.data);
   return {
     props: {
-      menus: data.menu.data.attributes.data,
+      menus,
+      tagged_menus
     },
   };
 }
