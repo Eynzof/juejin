@@ -1,0 +1,9 @@
+query menus {
+    menu(locale: "zh-CN") {
+        data {
+            attributes {
+                data
+            }
+        }
+    }
+}
