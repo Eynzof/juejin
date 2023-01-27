@@ -11,7 +11,14 @@ function CheckIn() {
         justifyContent={"space-between"}
       >
         <Box>
-          <Box sx={{ fontSize: 16, lineHeight: "24px", fontWeight: "600" }}>
+          <Box
+            sx={{
+              fontSize: 16,
+              lineHeight: "24px",
+              fontWeight: "600",
+              color: "text.secondary",
+            }}
+          >
             晚上好!
           </Box>
           <Box sx={{ fontSize: 12, color: "text.secondary" }}>

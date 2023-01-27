@@ -183,6 +183,12 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           sx={{ backgroundColor: "background.paper" }}
         >
           <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
+          <ArticleCard></ArticleCard>
           {/*{articles.map((article) => (*/}
           {/*  <div key={article.id}>*/}
           {/*    <h2>{article.title}</h2>*/}
@@ -195,10 +201,10 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           <CheckIn></CheckIn>
           <div className={styles.author__info}></div>
           <div className={styles.related__articles}>
-            <h4>Related Articles</h4>
+            <Box sx={{ color: "text.secondary" }}>相关文章</Box>
           </div>
           <div className={styles.table__of__contents}>
-            <h4>Table of Contents</h4>
+            <Box sx={{ color: "text.secondary" }}>文章目录</Box>
           </div>
         </div>
       </main>

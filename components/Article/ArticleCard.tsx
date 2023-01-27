@@ -4,7 +4,7 @@ import { Box, Container, Link } from "@mui/material";
 
 function ArticleCard() {
   return (
-    <div>
+    <Container className={styles.article__card}>
       <Container
         className={styles.meta__container}
         sx={{ color: "text.secondary" }}
@@ -35,11 +35,11 @@ function ArticleCard() {
               年——我的技术书和我的晋升，所以这篇年终总结以我的 2022 年为题。
             </Link>
           </div>
-          <div></div>
+          <div className={styles.action__list}></div>
         </div>
       </div>
       <div></div>
-    </div>
+    </Container>
   );
 }
 
