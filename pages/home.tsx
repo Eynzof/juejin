@@ -51,25 +51,15 @@ const AntTab = styled((props: StyledTabProps) => (
 }));
 
 type HomeProps = {
-  menus: NavigationItems;
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
   tagged_menus: any;
 };
-
-interface NavigationItem {
-  name: string;
-  url: string;
-  isActive: boolean;
-}
-
-type NavigationItems = NavigationItem[];
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
-  // const menus = props.menus;
   const tagged_menus = props.tagged_menus;
 
   let { data } = useQuery(["menu"], () => getMenus());
@@ -198,12 +188,9 @@ export default Home;
 
 export async function getStaticProps() {
   await queryClient.prefetchQuery(["menus"], () => getMenus());
-
-  const menus = await getPrimaryMenus();
   const tagged_menus = await getTaggedMenus();
   return {
     props: {
-      menus,
       tagged_menus,
     },
   };
