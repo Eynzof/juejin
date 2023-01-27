@@ -1,16 +1,16 @@
-import gql from 'graphql-tag';
-import client from "../../../api/apollo-client";
+import gql from "graphql-tag";
+import client from "../../../src/apollo-client";
 
 const MENU_QUERY = gql`
-    query Menu {
-        menu(locale: "zh-CN") {
-            data {
-                attributes {
-                    data
-                }
-            }
+  query Menu {
+    menu(locale: "zh-CN") {
+      data {
+        attributes {
+          data
         }
+      }
     }
+  }
 `;
 
 export const getPrimaryMenus = async () => {
@@ -25,16 +25,16 @@ export const getPrimaryMenus = async () => {
 };
 
 const MENU_TAGGED_QUERY = gql`
-    query MenuTagged {
-        menuTagged(locale: "zh-CN") {
-            data {
-                attributes {
-                    data
-                }
-            }
+  query MenuTagged {
+    menuTagged(locale: "zh-CN") {
+      data {
+        attributes {
+          data
         }
+      }
     }
-`
+  }
+`;
 
 export const getTaggedMenus = async () => {
   try {

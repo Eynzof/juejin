@@ -1,4 +1,4 @@
-query menus {
+query getMenus {
     menu(locale: "zh-CN") {
         data {
             attributes {

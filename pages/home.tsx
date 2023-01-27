@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
 import { gql } from "@apollo/client";
-import client from "../api/apollo-client";
-import {getPrimaryMenus, getTaggedMenus} from "./api/menus";
+import client from "../src/apollo-client";
+import { getPrimaryMenus, getTaggedMenus } from "./api/menus";
 // import { Article } from './types';
+
+import { dehydrate, useQuery } from "react-query";
+import { queryClient, getMenus } from "../src/api";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -66,8 +69,11 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
-  const menus = props.menus;
-  const tagged_menus = props.tagged_menus
+  // const menus = props.menus;
+  const tagged_menus = props.tagged_menus;
+
+  let { data } = useQuery(["menu"], () => getMenus());
+  const menus = data && data.menu.data.attributes.data;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -105,17 +111,18 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             />
             <div className={styles.header__navigation}>
               <div className={styles.header__navlist}>
-                {menus.map((menu, index) => (
-                  <Box sx={{ color: "text.default" }} key={index}>
-                    <Link
-                      href={menu.url}
-                      className={styles.header__navlink}
-                      sx={{ color: "text.secondary" }}
-                    >
-                      {menu.name}
-                    </Link>
-                  </Box>
-                ))}
+                {menus &&
+                  menus.map((menu, index) => (
+                    <Box sx={{ color: "text.default" }} key={index}>
+                      <Link
+                        href={menu.url}
+                        className={styles.header__navlink}
+                        sx={{ color: "text.secondary" }}
+                      >
+                        {menu.name}
+                      </Link>
+                    </Box>
+                  ))}
                 <div className={styles.header__banner}>
                   <img
                     src="/header_banner.jpg"
@@ -166,47 +173,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       </div>
       <main className={styles.main}>
         <div className={styles.main__left}>
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
-
-          <div>
-            <h1>Articles</h1>
-            <p>Article lore</p>
-          </div>
           {/*{articles.map((article) => (*/}
           {/*  <div key={article.id}>*/}
           {/*    <h2>{article.title}</h2>*/}
@@ -231,13 +197,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 export default Home;
 
 export async function getStaticProps() {
-  const menus = await getPrimaryMenus()
-  const tagged_menus = await getTaggedMenus()
+  await queryClient.prefetchQuery(["menus"], () => getMenus());
 
+  const menus = await getPrimaryMenus();
+  const tagged_menus = await getTaggedMenus();
   return {
     props: {
       menus,
-      tagged_menus
+      tagged_menus,
     },
   };
 }
