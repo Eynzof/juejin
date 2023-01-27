@@ -46,12 +46,14 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={activeTheme}>
-          <CssBaseline />
-          <Component {...pageProps} toggleTheme={toggleTheme} />
-        </ThemeProvider>
-      </CacheProvider>
+      <Hydrate state={pageProps.dehydratedState}>
+        <CacheProvider value={emotionCache}>
+          <ThemeProvider theme={activeTheme}>
+            <CssBaseline />
+            <Component {...pageProps} toggleTheme={toggleTheme} />
+          </ThemeProvider>
+        </CacheProvider>
+      </Hydrate>
     </QueryClientProvider>
   );
 };

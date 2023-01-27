@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
-import { gql } from "@apollo/client";
-import client from "../src/apollo-client";
-import { getPrimaryMenus, getTaggedMenus } from "./api/menus";
 // import { Article } from './types';
 
 import { dehydrate, useQuery } from "react-query";
@@ -50,9 +47,17 @@ const AntTab = styled((props: StyledTabProps) => (
   },
 }));
 
+export async function getServerSideProps() {
+  await queryClient.prefetchQuery(["menus"], () => getMenus());
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
+
 type HomeProps = {
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
-  tagged_menus: any;
 };
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
@@ -60,10 +65,12 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
-  const tagged_menus = props.tagged_menus;
+  const menus_result = useQuery(["menus"], () => getMenus());
 
-  let { data } = useQuery(["menu"], () => getMenus());
-  const menus = data && data.menu.data.attributes.data;
+  const menus =
+    menus_result.data && menus_result.data.menu.data.attributes.data;
+  const tagged_menus =
+    menus_result.data && menus_result.data.menuTagged.data.attributes.data;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -138,13 +145,14 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               aria-label="ant example"
               sx={{ backgroundColor: "background.default" }}
             >
-              {tagged_menus.map((menu, index) => (
-                <AntTab
-                  label={menu.name}
-                  key={index}
-                  sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
-                />
-              ))}
+              {tagged_menus &&
+                tagged_menus.map((menu, index) => (
+                  <AntTab
+                    label={menu.name}
+                    key={index}
+                    sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
+                  />
+                ))}
             </Tabs>
           </Box>
           <Box
@@ -185,13 +193,3 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 };
 
 export default Home;
-
-export async function getStaticProps() {
-  await queryClient.prefetchQuery(["menus"], () => getMenus());
-  const tagged_menus = await getTaggedMenus();
-  return {
-    props: {
-      tagged_menus,
-    },
-  };
-}

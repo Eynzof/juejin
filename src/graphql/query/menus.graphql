@@ -6,4 +6,11 @@ query getMenus {
             }
         }
     }
+    menuTagged(locale: "zh-CN") {
+        data {
+            attributes {
+                data
+            }
+        }
+    }
 }
