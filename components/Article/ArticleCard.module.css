@@ -1,0 +1,33 @@
+.title__row {
+
+}
+
+.meta__container {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    padding: 0;
+    height: 22px;
+}
+
+.meta__date {
+    /*padding: 0 12px;*/
+}
+
+/*.meta__date:before {*/
+/*    left: -6px;*/
+/*    content: "|";*/
+/*    position: relative;*/
+/*    color: #e5e6eb;*/
+/*}*/
+
+.content__wrapper {
+    margin-top: 10px;
+}
+
+/*.meta__date:after {*/
+/*    content: "|";*/
+/*    left: 6px;*/
+/*    position: relative;*/
+/*    color: #e5e6eb;*/
+/*}*/

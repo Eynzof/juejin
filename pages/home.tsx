@@ -99,7 +99,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
         className={styles.header}
         sx={{ backgroundColor: "background.paper" }}
       >
-        <div
+        <Box
+          sx={{ borderBottom: 1, borderColor: "divider" }}
           className={`${styles.header__top} ${
             headerCollapsed ? styles.collapsed : ""
           }`}
@@ -140,9 +141,12 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               </div>
             </div>
           </div>
-        </div>
+        </Box>
         {/* =============== Bottom Header =============== */}
-        <div className={styles.header__bottom}>
+        <Box
+          className={styles.header__bottom}
+          sx={{ borderBottom: 1, borderColor: "divider" }}
+        >
           <Box width={720}>
             <Tabs
               value={currentTab}
@@ -171,7 +175,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           >
             <p>标签管理</p>
           </Box>
-        </div>
+        </Box>
       </Box>
       <main className={styles.main}>
         <Box

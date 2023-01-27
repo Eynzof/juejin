@@ -1,25 +1,25 @@
-import { ThemeOptions } from '@mui/material/styles';
-import {amber} from "@mui/material/colors";
+import { ThemeOptions } from "@mui/material/styles";
+import { amber } from "@mui/material/colors";
 
 const lightThemeOptions: ThemeOptions = {
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#1e80ff',
+      main: "#1e80ff",
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     background: {
-      default: '#f4f5f5',
-      paper: '#ffffff'
+      default: "#f4f5f5",
+      paper: "#ffffff",
     },
     text: {
       primary: "#1d2129",
       secondary: "#4e5969",
       disabled: "#71777c",
     },
-
+    divider: "#f1f1f1",
     contrastThreshold: 3,
     // Used by the functions below to shift a color's luminance by approximately
     // two indexes within its tonal palette.
@@ -28,14 +28,14 @@ const lightThemeOptions: ThemeOptions = {
   },
   typography: {
     fontFamily: [
-      '-apple-system',
-      'system-ui',
+      "-apple-system",
+      "system-ui",
       '"Segoe UI"',
-      'Roboto',
+      "Roboto",
       '"Ubuntu"',
       '"Cantarell"',
       '"Noto-Sans"',
-      'sans-serif',
+      "sans-serif",
       '"Helvetica Neue"',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
@@ -43,8 +43,8 @@ const lightThemeOptions: ThemeOptions = {
       '"PingFang SC"',
       '"Hiragino Sans GB"',
       '"Microsoft YaHei"',
-      'Arial',
-    ].join(','),
+      "Arial",
+    ].join(","),
   },
 };
 
