@@ -5,6 +5,8 @@ import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
 
 import { dehydrate, useQuery } from "react-query";
 import { queryClient, getMenus } from "../src/api";
+import ArticleCard from "../components/Article/ArticleCard";
+import CheckIn from "../components/Home/CheckIn";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -93,7 +95,10 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
 
   return (
     <div className={styles.home__container}>
-      <div className={styles.header}>
+      <Box
+        className={styles.header}
+        sx={{ backgroundColor: "background.paper" }}
+      >
         <div
           className={`${styles.header__top} ${
             headerCollapsed ? styles.collapsed : ""
@@ -143,7 +148,6 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
               value={currentTab}
               onChange={handleTabSwitch}
               aria-label="ant example"
-              sx={{ backgroundColor: "background.default" }}
             >
               {tagged_menus &&
                 tagged_menus.map((menu, index) => (
@@ -168,17 +172,23 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
             <p>标签管理</p>
           </Box>
         </div>
-      </div>
+      </Box>
       <main className={styles.main}>
-        <div className={styles.main__left}>
+        <Box
+          className={styles.main__left}
+          sx={{ backgroundColor: "background.paper" }}
+        >
+          <ArticleCard></ArticleCard>
           {/*{articles.map((article) => (*/}
           {/*  <div key={article.id}>*/}
           {/*    <h2>{article.title}</h2>*/}
           {/*    <p>{article.content}</p>*/}
           {/*  </div>*/}
           {/*))}*/}
-        </div>
+        </Box>
         <div className={styles.main__right}>
+          {/* =============== 签到 =============== */}
+          <CheckIn></CheckIn>
           <div className={styles.author__info}></div>
           <div className={styles.related__articles}>
             <h4>Related Articles</h4>

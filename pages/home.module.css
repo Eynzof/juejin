@@ -1,6 +1,7 @@
 .home__container {
 
 }
+
 /*=============== Header ===============*/
 .header {
     position: fixed;
@@ -12,6 +13,7 @@
 
 .header__top {
     height: 60px;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .header__container {
@@ -35,6 +37,7 @@
     flex-direction: row;
     height: 100%;
 }
+
 .header__navlink {
     display: flex;
     align-items: center;
@@ -63,17 +66,18 @@
     height: 46px;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .header__bottom__tabkey {
     font-size: 14px;
-    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial!important;
+    font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial !important;
     padding: 0;
 }
 
 /*=============== MAIN ===============*/
 .main {
-    margin: 100px auto 0;
+    margin: 120px auto 0;
     max-width: 960px;
     display: grid;
     grid-template-columns: 700px 240px;
@@ -98,7 +102,6 @@
 }
 
 .main__right {
-    padding: 16px;
 }
 
 .author__info,
@@ -113,6 +116,7 @@
     .main {
         grid-template-columns: 1fr;
     }
+
     .main__right {
         display: none;
     }
