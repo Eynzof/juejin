@@ -21,20 +21,9 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 0 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
 }
 
 export default function ArticleTab() {
@@ -44,6 +33,9 @@ export default function ArticleTab() {
     setValue(newValue);
   };
 
+  // 如果想要在Tab页面里面直接嵌入文章，可能会比较麻烦
+  // 也可以分离开二者，Tab页面只负责Tab的切换，文章的内容由ArticleCard组件负责
+  // 需要注意的是，如果<p>的子元素是<div>，也会报hydration不匹配的错误。
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -52,34 +44,19 @@ export default function ArticleTab() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="推荐" key={1} />
+          <Tab label="最新" key={2} />
+          <Tab label="热榜" key={3} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
+        <ArticleCard />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
+        <ArticleCard />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
-        <ArticleCard></ArticleCard>
+        <ArticleCard />
       </TabPanel>
     </Box>
   );
