@@ -17,9 +17,7 @@ import { dehydrate, useQuery } from "react-query";
 import { queryClient, getMenus } from "../src/api";
 import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import SearchIcon from "@mui/icons-material/Search";
+import Operations from "../components/Header/Operations";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -59,48 +57,6 @@ const AntTab = styled((props: StyledTabProps) => (
   },
   "&.Mui-focusVisible": {
     backgroundColor: "#d1eaff",
-  },
-}));
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
   },
 }));
 
@@ -197,27 +153,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 </div>
               </div>
               <div className={styles.header__rightside}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="搜索..."
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
-
-                <IconButton
-                  onClick={props.toggleTheme}
-                  color="primary"
-                  aria-label="toggle theme"
-                >
-                  <Brightness4Icon />
-                </IconButton>
-
-                <IconButton color="primary" aria-label="notifications">
-                  <NotificationsIcon />
-                </IconButton>
+                <Operations />
               </div>
             </div>
           </div>

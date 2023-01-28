@@ -20,8 +20,12 @@ export const themeSlice = createSlice({
   initialState,
   reducers: {
     // Action to set the authentication status
-    setAuthState(state, action) {
-      state.light = action.payload;
+    setThemeState(state, action) {
+      state.isLight = action.payload;
+    },
+
+    switchTheme(state) {
+      state.isLight = !state.isLight;
     },
 
     // Special reducer for hydrating the state. Special case for next-redux-wrapper
@@ -36,8 +40,8 @@ export const themeSlice = createSlice({
   },
 });
 
-export const { setThemeState } = themeSlice.actions;
+export const { setThemeState, switchTheme } = themeSlice.actions;
 
-export const selectThemeState = (state: AppState) => state.theme.isLight;
+export const selectTheme = (state: AppState) => state.theme.isLight;
 
 export default themeSlice.reducer;
