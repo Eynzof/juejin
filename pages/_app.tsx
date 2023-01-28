@@ -2,7 +2,7 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
-
+import { Provider as ReduxProvider } from "react-redux";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { queryClient } from "../src/api";
 
@@ -28,8 +28,9 @@ function getActiveTheme(themeMode: "light" | "dark") {
   return themeMode === "light" ? lightTheme : darkTheme;
 }
 
-const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const [activeTheme, setActiveTheme] = useState(lightTheme);
   const [selectedTheme, setSelectedTheme] = useState<"light" | "dark">("light");
@@ -45,21 +46,23 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   }, [selectedTheme]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={activeTheme}>
-            <CssBaseline />
-            <Component
-              {...pageProps}
-              toggleTheme={toggleTheme}
-              currentTheme={selectedTheme}
-            />
-          </ThemeProvider>
-        </CacheProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <ReduxProvider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <CacheProvider value={emotionCache}>
+            <ThemeProvider theme={activeTheme}>
+              <CssBaseline />
+              <Component
+                {...pageProps}
+                toggleTheme={toggleTheme}
+                currentTheme={selectedTheme}
+              />
+            </ThemeProvider>
+          </CacheProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </ReduxProvider>
   );
 };
 
-export default wrapper.withRedux(MyApp);
+export default MyApp;
