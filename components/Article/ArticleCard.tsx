@@ -17,7 +17,10 @@ function ArticleCard() {
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <div>年终总结</div>
       </Container>
-      <div className={styles.content__wrapper}>
+      <Box
+        className={styles.content__wrapper}
+        sx={{ borderBottom: "1px solid", borderColor: "divider" }}
+      >
         <div className={styles.content__main}>
           <Box className={styles.title__row}>
             <Link href="#" underline="none" color={"text.secondary"}>
@@ -37,7 +40,7 @@ function ArticleCard() {
           </div>
           <div className={styles.action__list}></div>
         </div>
-      </div>
+      </Box>
       <div></div>
     </Container>
   );

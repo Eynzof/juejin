@@ -35,7 +35,6 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
 
   const toggleTheme: React.MouseEventHandler<HTMLAnchorElement> = () => {
     const desiredTheme = selectedTheme === "light" ? "dark" : "light";
-
     setSelectedTheme(desiredTheme);
   };
 
@@ -50,7 +49,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
         <CacheProvider value={emotionCache}>
           <ThemeProvider theme={activeTheme}>
             <CssBaseline />
-            <Component {...pageProps} toggleTheme={toggleTheme} />
+            <Component
+              {...pageProps}
+              toggleTheme={toggleTheme}
+              currentTheme={selectedTheme}
+            />
           </ThemeProvider>
         </CacheProvider>
       </Hydrate>

@@ -104,6 +104,13 @@
 .main__right {
 }
 
+.header__rightside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+
 .author__info,
 .related__articles,
 .table__of__contents {

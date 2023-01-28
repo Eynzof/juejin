@@ -1,6 +1,8 @@
 import { ThemeOptions } from "@mui/material/styles";
 import { deepOrange } from "@mui/material/colors";
 
+import Logo from "../../public/juejin_logo_dark.svg";
+
 const darkThemeOptions: ThemeOptions = {
   palette: {
     mode: "dark",

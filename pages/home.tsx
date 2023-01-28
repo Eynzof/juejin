@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import { Box, Button, Link, styled, Tab, Tabs } from "@mui/material";
+import {
+  alpha,
+  Box,
+  Button,
+  IconButton,
+  InputBase,
+  Link,
+  styled,
+  Tab,
+  Tabs,
+} from "@mui/material";
 // import { Article } from './types';
 
 import { dehydrate, useQuery } from "react-query";
 import { queryClient, getMenus } from "../src/api";
 import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -49,6 +62,48 @@ const AntTab = styled((props: StyledTabProps) => (
   },
 }));
 
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
+
 export async function getServerSideProps() {
   await queryClient.prefetchQuery(["menus"], () => getMenus());
   return {
@@ -60,12 +115,15 @@ export async function getServerSideProps() {
 
 type HomeProps = {
   toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
+  currentTheme?: "light" | "dark";
 };
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
+
+  console.log(props.currentTheme);
 
   const menus_result = useQuery(["menus"], () => getMenus());
 
@@ -108,7 +166,11 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
           {/* =============== Top Header =============== */}
           <div className={styles.header__container}>
             <img
-              src="/juejin_logo.svg"
+              src={
+                props.currentTheme === "light"
+                  ? "/juejin_logo.svg"
+                  : "/juejin_logo_dark.svg"
+              }
               alt="Logo"
               className={styles.header__logo}
             />
@@ -135,9 +197,27 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
                 </div>
               </div>
               <div className={styles.header__rightside}>
-                <Button onClick={props.toggleTheme} color={"info"}>
-                  Toggle Theme
-                </Button>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="搜索..."
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
+
+                <IconButton
+                  onClick={props.toggleTheme}
+                  color="primary"
+                  aria-label="toggle theme"
+                >
+                  <Brightness4Icon />
+                </IconButton>
+
+                <IconButton color="primary" aria-label="notifications">
+                  <NotificationsIcon />
+                </IconButton>
               </div>
             </div>
           </div>
