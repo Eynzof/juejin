@@ -55,6 +55,7 @@ function Operations() {
   const dispatch = useDispatch();
 
   const toggleTheme = () => {
+    // @ts-ignore
     dispatch(switchTheme());
   };
 

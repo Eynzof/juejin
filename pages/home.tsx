@@ -18,6 +18,7 @@ import { queryClient, getMenus } from "../src/api";
 import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
 import Operations from "../components/Header/Operations";
+import JueJinLogo from "../components/Header/JueJinLogo";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -69,17 +70,10 @@ export async function getServerSideProps() {
   };
 }
 
-type HomeProps = {
-  toggleTheme?: React.MouseEventHandler<HTMLButtonElement>;
-  currentTheme?: "light" | "dark";
-};
-
-const Home: React.FC<HomeProps> = (props: HomeProps) => {
+const Home: React.FC = () => {
   // const [articles, setArticles] = useState<Article[]>([]);
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
-
-  console.log(props.currentTheme);
 
   const menus_result = useQuery(["menus"], () => getMenus());
 
@@ -121,15 +115,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
         >
           {/* =============== Top Header =============== */}
           <div className={styles.header__container}>
-            <img
-              src={
-                props.currentTheme === "light"
-                  ? "/juejin_logo.svg"
-                  : "/juejin_logo_dark.svg"
-              }
-              alt="Logo"
-              className={styles.header__logo}
-            />
+            <JueJinLogo />
             <div className={styles.header__navigation}>
               <div className={styles.header__navlist}>
                 {menus &&
