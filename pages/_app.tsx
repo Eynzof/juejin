@@ -12,6 +12,7 @@ import darkThemeOptions from "../styles/theme/darkThemeOptions";
 
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
+import { wrapper } from "../src/store/store";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -61,4 +62,4 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   );
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
