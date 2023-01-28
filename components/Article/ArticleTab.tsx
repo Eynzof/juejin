@@ -51,6 +51,21 @@ export default function ArticleTab() {
       </Box>
       <TabPanel value={value} index={0}>
         <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ArticleCard />

@@ -39,4 +39,7 @@
 
 .action__list {
     height: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
 }

@@ -2,6 +2,11 @@ import React from "react";
 import styles from "./ArticleCard.module.css";
 import { Box, Container, Link } from "@mui/material";
 
+import VisibilityOutlinedIcon from "@mui/icons-material/Visibility";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUp";
+
+import ForumOutlinedIcon from "@mui/icons-material/Forum";
+
 function ArticleCard() {
   return (
     <Container className={styles.article__card}>
@@ -38,7 +43,53 @@ function ArticleCard() {
               年——我的技术书和我的晋升，所以这篇年终总结以我的 2022 年为题。
             </Link>
           </div>
-          <div className={styles.action__list}></div>
+          <div className={styles.action__list}>
+            <Box
+              sx={{ display: "flex", color: "text.disabled", width: "68px" }}
+            >
+              <VisibilityOutlinedIcon fontSize="small" />
+              <Box
+                sx={{
+                  marginLeft: "6px",
+                  fontSize: "13px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                12w
+              </Box>
+            </Box>
+            <Box
+              sx={{ display: "flex", color: "text.disabled", width: "68px" }}
+            >
+              <ThumbUpOutlinedIcon fontSize="small" />
+              <Box
+                sx={{
+                  marginLeft: "6px",
+                  fontSize: "13px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                2w
+              </Box>
+            </Box>
+            <Box
+              sx={{ display: "flex", color: "text.disabled", width: "68px" }}
+            >
+              <ForumOutlinedIcon fontSize="small" />
+              <Box
+                sx={{
+                  marginLeft: "6px",
+                  fontSize: "13px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                4.9w
+              </Box>
+            </Box>
+          </div>
         </div>
       </Box>
       <div></div>
