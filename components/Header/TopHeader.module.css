@@ -1,0 +1,38 @@
+.header__container {
+    margin: 0 auto;
+    width: 1440px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header__navigation {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.header__navlist {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.header__navlink {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 14px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.header__banner {
+    height: 100%;
+    width: 139px;
+    display: flex;
+    align-items: center;
+}

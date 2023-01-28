@@ -1,12 +1,22 @@
 import React from "react";
-import { Box, Link } from "@mui/material";
-import styles from "../../pages/home.module.css";
+import { Box, Link, styled, Tab } from "@mui/material";
+import styles from "./TopHeader.module.css";
 import JueJinLogo from "./JueJinLogo";
 import Operations from "./Operations";
 import { useQuery } from "react-query";
 import { getMenus } from "../../src/api";
 
-function Header() {
+interface StyledTabsProps {
+  children?: React.ReactNode;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+interface StyledTabProps {
+  label: string;
+}
+
+function TopHeader() {
   const menus_result = useQuery(["menus"], () => getMenus());
 
   const menus =
@@ -45,4 +55,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default TopHeader;

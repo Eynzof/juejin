@@ -1,66 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import {
-  alpha,
-  Box,
-  Button,
-  IconButton,
-  InputBase,
-  Link,
-  styled,
-  Tab,
-  Tabs,
-} from "@mui/material";
-// import { Article } from './types';
-
-import { dehydrate, useQuery } from "react-query";
-import { queryClient, getMenus } from "../src/api";
+import { Box } from "@mui/material";
+import { dehydrate } from "react-query";
+import { getMenus, queryClient } from "../src/api";
 import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
-import Operations from "../components/Header/Operations";
-import JueJinLogo from "../components/Header/JueJinLogo";
-import Header from "../components/Header/Header";
-
-const AntTabs = styled(Tabs)({
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
-  },
-});
-
-interface StyledTabsProps {
-  children?: React.ReactNode;
-  value: number;
-  onChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
-
-interface StyledTabProps {
-  label: string;
-}
-
-const AntTab = styled((props: StyledTabProps) => (
-  <Tab disableRipple {...props} />
-))(({ theme }) => ({
-  textTransform: "none",
-  minWidth: 0,
-  [theme.breakpoints.up("sm")]: {
-    minWidth: 0,
-  },
-  fontWeight: theme.typography.fontWeightRegular,
-  marginRight: theme.spacing(1),
-  color: theme.palette.text.disabled,
-  fontFamily: theme.typography.fontFamily,
-  "&:hover": {
-    color: "#40a9ff",
-    opacity: 1,
-  },
-  "&.Mui-selected": {
-    color: "#1890ff",
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-  "&.Mui-focusVisible": {
-    backgroundColor: "#d1eaff",
-  },
-}));
+import TopHeader from "../components/Header/TopHeader";
+import ArticleNavigation from "../components/Article/ArticleNavigation";
+import BottomHeader from "../components/Header/BottomHeader";
 
 export async function getServerSideProps() {
   await queryClient.prefetchQuery(["menus"], () => getMenus());
@@ -71,15 +18,8 @@ export async function getServerSideProps() {
   };
 }
 
-const Home: React.FC = () => {
-  // const [articles, setArticles] = useState<Article[]>([]);
+const Home = () => {
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
-  const [currentTab, setCurrentTab] = useState(0);
-
-  const menus_result = useQuery(["menus"], () => getMenus());
-
-  const tagged_menus =
-    menus_result.data && menus_result.data.menuTagged.data.attributes.data;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -96,10 +36,6 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleTabSwitch = (event: React.SyntheticEvent, newValue: number) => {
-    setCurrentTab(newValue);
-  };
-
   return (
     <div className={styles.home__container}>
       <Box
@@ -112,49 +48,18 @@ const Home: React.FC = () => {
             headerCollapsed ? styles.collapsed : ""
           }`}
         >
-          {/* =============== Top Header =============== */}
-          <Header />
+          {/* =============== Top TopHeader =============== */}
+          <TopHeader />
         </Box>
-        {/* =============== Bottom Header =============== */}
-        <Box
-          className={styles.header__bottom}
-          sx={{ borderBottom: 1, borderColor: "divider" }}
-        >
-          <Box width={720}>
-            <Tabs
-              value={currentTab}
-              onChange={handleTabSwitch}
-              aria-label="ant example"
-            >
-              {tagged_menus &&
-                tagged_menus.map((menu, index) => (
-                  <AntTab
-                    label={menu.name}
-                    key={index}
-                    sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
-                  />
-                ))}
-            </Tabs>
-          </Box>
-          <Box
-            width={240}
-            sx={{
-              fontSize: 14,
-              paddingY: 0,
-              color: "text.disabled",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <p>标签管理</p>
-          </Box>
-        </Box>
+        {/* =============== Bottom TopHeader =============== */}
+        <BottomHeader />
       </Box>
       <main className={styles.main}>
         <Box
           className={styles.main__left}
           sx={{ backgroundColor: "background.paper" }}
         >
+          <ArticleNavigation />
           <ArticleCard></ArticleCard>
           <ArticleCard></ArticleCard>
           <ArticleCard></ArticleCard>
