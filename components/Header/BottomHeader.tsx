@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../pages/home.module.css";
+import styles from "./BottomHeader.module.css";
 import { Box, styled, Tab, Tabs } from "@mui/material";
 import { useQuery } from "react-query";
 import { getMenus } from "../../src/api";

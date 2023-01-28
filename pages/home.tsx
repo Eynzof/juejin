@@ -8,6 +8,7 @@ import CheckIn from "../components/Home/CheckIn";
 import TopHeader from "../components/Header/TopHeader";
 import ArticleNavigation from "../components/Article/ArticleNavigation";
 import BottomHeader from "../components/Header/BottomHeader";
+import ArticleTab from "../components/Article/ArticleTab";
 
 export async function getServerSideProps() {
   await queryClient.prefetchQuery(["menus"], () => getMenus());
@@ -59,14 +60,10 @@ const Home = () => {
           className={styles.main__left}
           sx={{ backgroundColor: "background.paper" }}
         >
-          <ArticleNavigation />
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
-          <ArticleCard></ArticleCard>
+          <ArticleTab />
+          {/*<ArticleNavigation />*/}
+          {/*<ArticleCard></ArticleCard>*/}
+
           {/*{articles.map((article) => (*/}
           {/*  <div key={article.id}>*/}
           {/*    <h2>{article.title}</h2>*/}
