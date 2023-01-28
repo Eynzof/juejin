@@ -19,6 +19,7 @@ import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
 import Operations from "../components/Header/Operations";
 import JueJinLogo from "../components/Header/JueJinLogo";
+import Header from "../components/Header/Header";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -77,8 +78,6 @@ const Home: React.FC = () => {
 
   const menus_result = useQuery(["menus"], () => getMenus());
 
-  const menus =
-    menus_result.data && menus_result.data.menu.data.attributes.data;
   const tagged_menus =
     menus_result.data && menus_result.data.menuTagged.data.attributes.data;
 
@@ -114,35 +113,7 @@ const Home: React.FC = () => {
           }`}
         >
           {/* =============== Top Header =============== */}
-          <div className={styles.header__container}>
-            <JueJinLogo />
-            <div className={styles.header__navigation}>
-              <div className={styles.header__navlist}>
-                {menus &&
-                  menus.map((menu, index) => (
-                    <Box sx={{ color: "text.default" }} key={index}>
-                      <Link
-                        href={menu.url}
-                        className={styles.header__navlink}
-                        sx={{ color: "text.secondary" }}
-                      >
-                        {menu.name}
-                      </Link>
-                    </Box>
-                  ))}
-                <div className={styles.header__banner}>
-                  <img
-                    src="/header_banner.jpg"
-                    alt="Logo"
-                    style={{ maxWidth: 115, maxHeight: 40 }}
-                  />
-                </div>
-              </div>
-              <div className={styles.header__rightside}>
-                <Operations />
-              </div>
-            </div>
-          </div>
+          <Header />
         </Box>
         {/* =============== Bottom Header =============== */}
         <Box
