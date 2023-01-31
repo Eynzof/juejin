@@ -6,8 +6,10 @@ import VisibilityOutlinedIcon from "@mui/icons-material/Visibility";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUp";
 
 import ForumOutlinedIcon from "@mui/icons-material/Forum";
+import { useRouter } from "next/router";
 
 function ArticleCard() {
+  const router = useRouter();
   return (
     <Container className={styles.article__card}>
       <Container
@@ -26,7 +28,12 @@ function ArticleCard() {
         className={styles.content__wrapper}
         sx={{ borderBottom: "1px solid", borderColor: "divider" }}
       >
-        <div className={styles.content__main}>
+        <div
+          className={styles.content__main}
+          onClick={() => {
+            router.push("/post_detail/123");
+          }}
+        >
           <Box className={styles.title__row}>
             <Link href="#" underline="none" color={"text.secondary"}>
               我的 2022 年，写书，房子，车子，晋升
