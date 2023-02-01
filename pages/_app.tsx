@@ -15,6 +15,11 @@ import { useEffect, useState } from "react";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
 
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const { GRAPHQL_API_URL, LOCAL_JSON_FILE } = publicRuntimeConfig;
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -28,6 +33,14 @@ const darkTheme = createTheme(darkThemeOptions);
 const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { emotionCache = clientSideEmotionCache, pageProps } = props;
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      console.log(`Using GraphQL API: ${GRAPHQL_API_URL}`);
+    } else {
+      console.log(`Using local JSON file: ${LOCAL_JSON_FILE}`);
+    }
+  }, []);
 
   return (
     <ReduxProvider store={store}>

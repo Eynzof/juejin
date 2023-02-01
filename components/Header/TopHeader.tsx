@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Link, styled, Tab } from "@mui/material";
 import styles from "./TopHeader.module.css";
 import JueJinLogo from "./JueJinLogo";
@@ -17,10 +17,25 @@ interface StyledTabProps {
 }
 
 function TopHeader() {
-  const menus_result = useQuery(["menus"], () => getMenus());
+  const [menus, setMenus] = useState([]);
 
-  const menus =
-    menus_result.data && menus_result.data.menu.data.attributes.data;
+  // 如果当前模式是 production 向GraphQL请求菜单数据，否则向本地的pages/api/menus请求数据
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      const menus_result = useQuery(["menus"], () => getMenus());
+      setMenus(
+        menus_result.data && menus_result.data.menu.data.attributes.data
+      );
+    } else {
+      fetch("http://localhost:3000/api/menus")
+        .then((response) => response.json())
+        .then((data) => {
+          // store the data in a variable
+          console.log(data["menus"]);
+          setMenus(data["menus"]);
+        });
+    }
+  }, []);
 
   return (
     <div className={styles.header__container}>

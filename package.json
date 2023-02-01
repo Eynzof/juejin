@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development next",
+    "prod":"NODE_ENV=production next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
