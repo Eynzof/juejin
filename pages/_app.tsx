@@ -11,14 +11,14 @@ import lightThemeOptions from "../styles/theme/lightThemeOptions";
 import darkThemeOptions from "../styles/theme/darkThemeOptions";
 
 import "../styles/globals.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
 
 import getConfig from "next/config";
 
 const { publicRuntimeConfig } = getConfig();
-const { GRAPHQL_API_URL, LOCAL_JSON_FILE } = publicRuntimeConfig;
+const { GRAPHQL_API_URL } = publicRuntimeConfig;
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -35,10 +35,10 @@ const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
   const { emotionCache = clientSideEmotionCache, pageProps } = props;
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.APP_ENV === "production") {
       console.log(`Using GraphQL API: ${GRAPHQL_API_URL}`);
     } else {
-      console.log(`Using local JSON file: ${LOCAL_JSON_FILE}`);
+      console.log(`Using local JSON file`);
     }
   }, []);
 

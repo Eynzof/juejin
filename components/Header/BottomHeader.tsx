@@ -45,14 +45,14 @@ const AntTab = styled((props: StyledTabProps) => (
   },
 }));
 
-function BottomHeader(props) {
+const BottomHeader = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const [menus, setMenus] = useState([]);
 
   // 如果当前模式是 production 向GraphQL请求菜单数据，否则向本地的pages/api/menus请求数据
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.APP_ENV === "production") {
       const menus_result = useQuery(["menus"], () => getMenus());
 
       setMenus(
@@ -108,6 +108,6 @@ function BottomHeader(props) {
       </Box>
     </Box>
   );
-}
+};
 
 export default BottomHeader;

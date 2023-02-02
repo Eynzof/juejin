@@ -16,12 +16,13 @@ interface StyledTabProps {
   label: string;
 }
 
-function TopHeader() {
+const TopHeader = () => {
   const [menus, setMenus] = useState([]);
 
   // 如果当前模式是 production 向GraphQL请求菜单数据，否则向本地的pages/api/menus请求数据
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    console.log("process.env.APP_ENV", process.env.APP_ENV);
+    if (process.env.APP_ENV === "production") {
       const menus_result = useQuery(["menus"], () => getMenus());
       setMenus(
         menus_result.data && menus_result.data.menu.data.attributes.data
@@ -68,6 +69,6 @@ function TopHeader() {
       </div>
     </div>
   );
-}
+};
 
 export default TopHeader;

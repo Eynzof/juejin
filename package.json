@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next",
-    "prod":"NODE_ENV=production next",
+    "dev": "APP_ENV=development next",
+    "prod": "APP_ENV=production next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
@@ -19,6 +19,7 @@
     "@mui/material": "^5.11.6",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.3",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
     "next": "latest",
