@@ -1,4 +1,5 @@
 //@ts-nocheck
+
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
 import { HYDRATE } from "next-redux-wrapper";
@@ -14,7 +15,7 @@ const initialState: ThemeState = {
 };
 
 // Actual Slice
-// @ts-ignore
+
 export const themeSlice = createSlice({
   name: "theme",
   initialState,
@@ -24,7 +25,7 @@ export const themeSlice = createSlice({
       state.isLight = action.payload;
     },
 
-    switchTheme(state) {
+    switchTheme(state, _) {
       state.isLight = !state.isLight;
     },
 
