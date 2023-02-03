@@ -11,9 +11,9 @@ import lightThemeOptions from "../styles/theme/lightThemeOptions";
 import darkThemeOptions from "../styles/theme/darkThemeOptions";
 
 import "../styles/globals.css";
-import { useEffect } from "react";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
+import { ReactNode } from "react";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -28,14 +28,6 @@ const darkTheme = createTheme(darkThemeOptions);
 const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { emotionCache = clientSideEmotionCache, pageProps } = props;
-
-  // useEffect(() => {
-  //   if (process.env.APP_ENV === "production") {
-  //     console.log(`Using GraphQL API: `, process.env.GRAPHQL_API_URL);
-  //   } else {
-  //     console.log(`Using local JSON file`);
-  //   }
-  // }, []);
 
   return (
     <ReduxProvider store={store}>
@@ -56,12 +48,18 @@ const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
 // 我们将 theme 这个参数存储进了 redux, 然后在ThemeProvider中取出这个参数。
 // 但是，如果Redux Provider和ThemeProvider在同一个元素中，那么ThemeProvider无法获取Redux Context中的数据。
 // 这时候就需要一个中间组件，将Redux Provider和ThemeProvider分开。
-const ThemeWrapper = (props) => {
+
+interface Props {
+  children: ReactNode;
+}
+
+const ThemeWrapper: React.FC<Props> = ({ children }) => {
   const themeState = useSelector(selectTheme);
+
   return (
     <ThemeProvider theme={themeState ? lightTheme : darkTheme}>
       <CssBaseline />
-      {props.children}
+      {children}
     </ThemeProvider>
   );
 };
