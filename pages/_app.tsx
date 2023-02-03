@@ -6,12 +6,12 @@ import { Provider as ReduxProvider, useSelector } from "react-redux";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { queryClient } from "../src/api";
 
-import createEmotionCache from "../utils/createEmotionCache";
+import createEmotionCache from "../src/utils/createEmotionCache";
 import lightThemeOptions from "../styles/theme/lightThemeOptions";
 import darkThemeOptions from "../styles/theme/darkThemeOptions";
 
 import "../styles/globals.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
 
@@ -28,6 +28,14 @@ const darkTheme = createTheme(darkThemeOptions);
 const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { emotionCache = clientSideEmotionCache, pageProps } = props;
+
+  // useEffect(() => {
+  //   if (process.env.APP_ENV === "production") {
+  //     console.log(`Using GraphQL API: `, process.env.GRAPHQL_API_URL);
+  //   } else {
+  //     console.log(`Using local JSON file`);
+  //   }
+  // }, []);
 
   return (
     <ReduxProvider store={store}>

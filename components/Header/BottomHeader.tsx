@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BottomHeader.module.css";
 import { Box, styled, Tab, Tabs } from "@mui/material";
-import { useQuery } from "react-query";
-import { getMenus } from "../../src/api";
+import { dehydrate, useQuery } from "react-query";
+import { getMenus, queryClient } from "../../src/api";
+import { sampleMenuData } from "../../src/data/Menus";
+import { sampleTaggedMenuData } from "../../src/data/TaggedMenus";
 
 interface StyledTabsProps {
   children?: React.ReactNode;
@@ -45,12 +47,12 @@ const AntTab = styled((props: StyledTabProps) => (
   },
 }));
 
-function BottomHeader(props) {
+const BottomHeader = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const menus_result = useQuery(["menus"], () => getMenus());
 
-  const tagged_menus =
+  const menus =
     menus_result.data && menus_result.data.menuTagged.data.attributes.data;
 
   const handleTabSwitch = (event: React.SyntheticEvent, newValue: number) => {
@@ -68,8 +70,8 @@ function BottomHeader(props) {
           onChange={handleTabSwitch}
           aria-label="ant example"
         >
-          {tagged_menus &&
-            tagged_menus.map((menu, index) => (
+          {menus &&
+            menus.map((menu, index) => (
               <AntTab
                 label={menu.name}
                 key={index}
@@ -92,6 +94,6 @@ function BottomHeader(props) {
       </Box>
     </Box>
   );
-}
+};
 
 export default BottomHeader;

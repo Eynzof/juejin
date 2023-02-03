@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 
 import { User } from "../../interfaces";
-import { sampleUserData } from "../../utils/sample-data";
+import { sampleUserData } from "../../src/utils/sample-data";
 import Layout from "../../components/Layout";
 import List from "../../components/List";
 
@@ -25,9 +25,8 @@ const WithStaticProps = ({ items }: Props) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Example for including static props in a Next.js function component page.
-  // Don't forget to include the respective types for any props passed into
-  // the component.
+  // 在Next.js函数组件页面中包含静态参数的例子。
+  // 不要忘了将传递到组件中的参数的各自类型定义包括在内。
   const items: User[] = sampleUserData;
   return { props: { items } };
 };

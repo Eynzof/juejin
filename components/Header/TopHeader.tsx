@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Link, styled, Tab } from "@mui/material";
 import styles from "./TopHeader.module.css";
 import JueJinLogo from "./JueJinLogo";
 import Operations from "./Operations";
-import { useQuery } from "react-query";
-import { getMenus } from "../../src/api";
+import { dehydrate, useQuery } from "react-query";
+import { getMenus, queryClient } from "../../src/api";
+import { GetStaticProps } from "next";
+import { sampleUserData } from "../../src/utils/sample-data";
+import id from "../../pages/users/[id]";
+import { sampleMenuData } from "../../src/data/Menus";
+import { User } from "../../interfaces";
+import { Menu } from "../../src/types/Menu";
+import menus from "../../pages/api/menus";
 
 interface StyledTabsProps {
   children?: React.ReactNode;
@@ -16,9 +23,8 @@ interface StyledTabProps {
   label: string;
 }
 
-function TopHeader() {
+const TopHeader = () => {
   const menus_result = useQuery(["menus"], () => getMenus());
-
   const menus =
     menus_result.data && menus_result.data.menu.data.attributes.data;
 
@@ -53,6 +59,6 @@ function TopHeader() {
       </div>
     </div>
   );
-}
+};
 
 export default TopHeader;
