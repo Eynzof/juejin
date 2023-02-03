@@ -19,7 +19,7 @@ export async function getServerSideProps() {
       console.log(
         "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地数据"
       );
-      // console.error(error);
+      console.error(error);
 
       // 使用本地数据
       return sampleMenuData;
