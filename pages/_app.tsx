@@ -6,7 +6,7 @@ import { Provider as ReduxProvider, useSelector } from "react-redux";
 import { Hydrate, QueryClientProvider } from "react-query";
 import { queryClient } from "../src/api";
 
-import createEmotionCache from "../utils/createEmotionCache";
+import createEmotionCache from "../src/utils/createEmotionCache";
 import lightThemeOptions from "../styles/theme/lightThemeOptions";
 import darkThemeOptions from "../styles/theme/darkThemeOptions";
 
