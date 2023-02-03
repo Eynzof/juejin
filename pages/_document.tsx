@@ -1,6 +1,6 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-// @ts-ignore
+
 import createEmotionServer from "@emotion/server/create-instance";
 
 import createEmotionCache from "../src/utils/createEmotionCache";
