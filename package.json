@@ -1,8 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "APP_ENV=development next",
-    "prod": "APP_ENV=production next",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
