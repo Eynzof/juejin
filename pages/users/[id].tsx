@@ -40,20 +40,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { id: user.id.toString() },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
+  // 我们将在构建时只对这些路径进行预渲染。
+  // { fallback: false }意味着其他路径会返回404。
   return { paths, fallback: false };
 };
 
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries.
+// 这个函数在服务器端构建时被调用。
+// 它不会在客户端被调用，所以你甚至可以直接在此处查询数据库。
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id;
     const item = sampleUserData.find((data) => data.id === Number(id));
-    // By returning { props: item }, the StaticPropsDetail component
-    // will receive `item` as a prop at build time
+    // 通过返回 { props: item }，StaticPropsDetail组件 将在构建时收到`item`作为参数
     return { props: { item } };
   } catch (err: any) {
     return { props: { errors: err.message } };

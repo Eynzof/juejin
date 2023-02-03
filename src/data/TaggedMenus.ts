@@ -52,4 +52,9 @@ export const sampleTaggedMenuData: TaggedMenu[] = [
     url: "http://example.com/plugins",
     isActive: false,
   },
+  {
+    name: "本地模式",
+    url: "http://example.com/plugins",
+    isActive: false,
+  },
 ];

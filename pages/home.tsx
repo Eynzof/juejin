@@ -10,15 +10,6 @@ import ArticleNavigation from "../components/Article/ArticleNavigation";
 import BottomHeader from "../components/Header/BottomHeader";
 import ArticleTab from "../components/Article/ArticleTab";
 
-export async function getServerSideProps() {
-  await queryClient.prefetchQuery(["menus"], () => getMenus());
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
-
 const Home = () => {
   const [headerCollapsed, setHeaderCollapsed] = useState(false);
 
