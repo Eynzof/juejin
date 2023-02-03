@@ -1,14 +1,37 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { Box } from "@mui/material";
-import { dehydrate } from "react-query";
 import { getMenus, queryClient } from "../src/api";
-import ArticleCard from "../components/Article/ArticleCard";
 import CheckIn from "../components/Home/CheckIn";
 import TopHeader from "../components/Header/TopHeader";
-import ArticleNavigation from "../components/Article/ArticleNavigation";
 import BottomHeader from "../components/Header/BottomHeader";
 import ArticleTab from "../components/Article/ArticleTab";
+import { dehydrate } from "react-query";
+import sampleMenuData from "../resources/MenuResponse.json";
+
+export async function getServerSideProps() {
+  // await testApi();
+
+  await queryClient.prefetchQuery(["menus"], async () => {
+    try {
+      return await getMenus();
+    } catch (error) {
+      console.log(
+        "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地数据"
+      );
+      // console.error(error);
+
+      // 使用本地数据
+      return sampleMenuData;
+    }
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 const Home = () => {
   const [headerCollapsed, setHeaderCollapsed] = useState(false);

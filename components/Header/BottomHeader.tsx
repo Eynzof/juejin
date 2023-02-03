@@ -47,32 +47,13 @@ const AntTab = styled((props: StyledTabProps) => (
   },
 }));
 
-export async function getServerSideProps() {
-  await queryClient.prefetchQuery(["menus"], () => getMenus());
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
-
 const BottomHeader = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
-  const [menus, setMenus] = useState([]);
   const menus_result = useQuery(["menus"], () => getMenus());
 
-  // 如果当前模式是 production 向 GraphQL 请求菜单数据，否则向本地的 pages/api/menus 请求数据
-  useEffect(() => {
-    console.log("process.env.APP_ENV", process.env.APP_ENV);
-    if (process.env.APP_ENV === "production") {
-      setMenus(
-        menus_result.data && menus_result.data.menuTagged.data.attributes.data
-      );
-    } else {
-      setMenus(sampleTaggedMenuData);
-    }
-  }, []);
+  const menus =
+    menus_result.data && menus_result.data.menuTagged.data.attributes.data;
 
   const handleTabSwitch = (event: React.SyntheticEvent, newValue: number) => {
     setCurrentTab(newValue);
