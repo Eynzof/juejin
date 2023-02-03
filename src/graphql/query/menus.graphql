@@ -1,0 +1,16 @@
+query getMenus {
+    menu(locale: "zh-CN") {
+        data {
+            attributes {
+                data
+            }
+        }
+    }
+    menuTagged(locale: "zh-CN") {
+        data {
+            attributes {
+                data
+            }
+        }
+    }
+}

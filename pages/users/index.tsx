@@ -1,14 +1,14 @@
-import { GetStaticProps } from 'next'
-import Link from 'next/link'
+import { GetStaticProps } from "next";
+import Link from "next/link";
 
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
-import Layout from '../../components/Layout'
-import List from '../../components/List'
+import { User } from "../../interfaces";
+import { sampleUserData } from "../../src/utils/sample-data";
+import Layout from "../../components/Layout";
+import List from "../../components/List";
 
 type Props = {
-  items: User[]
-}
+  items: User[];
+};
 
 const WithStaticProps = ({ items }: Props) => (
   <Layout title="Users List | Next.js + TypeScript Example">
@@ -22,14 +22,13 @@ const WithStaticProps = ({ items }: Props) => (
       <Link href="/">Go home</Link>
     </p>
   </Layout>
-)
+);
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Example for including static props in a Next.js function component page.
-  // Don't forget to include the respective types for any props passed into
-  // the component.
-  const items: User[] = sampleUserData
-  return { props: { items } }
-}
+  // 在Next.js函数组件页面中包含静态参数的例子。
+  // 不要忘了将传递到组件中的参数的各自类型定义包括在内。
+  const items: User[] = sampleUserData;
+  return { props: { items } };
+};
 
-export default WithStaticProps
+export default WithStaticProps;

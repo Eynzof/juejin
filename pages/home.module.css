@@ -1,0 +1,77 @@
+.home__container {
+
+}
+
+/*=============== TopHeader ===============*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.header__top {
+    transition: all 0.3s ease;
+}
+
+.header__bottom {
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    /*border-bottom: 1px solid #f1f1f1;*/
+}
+
+.header__bottom__tabkey {
+    font-size: 14px;
+    font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial !important;
+    padding: 0;
+}
+
+/*=============== MAIN ===============*/
+.main {
+    margin: 120px auto 0;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 700px 240px;
+    grid-column-gap: 20px;
+}
+
+
+/*.collapsed {*/
+/*.header__top {*/
+/*    height: 0;*/
+/*    overflow: hidden;*/
+/*}*/
+/*}*/
+
+.collapsed {
+    height: 0;
+    overflow: hidden;
+}
+
+.main__left {
+    /*padding: 16px;*/
+}
+
+.main__right {
+}
+
+
+.author__info,
+.related__articles,
+.table__of__contents {
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media (max-width: 1000px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .main__right {
+        display: none;
+    }
+}

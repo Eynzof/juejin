@@ -1,0 +1,18 @@
+query getArticles($articlesPagination: PaginationArg) {
+    articles(pagination: $articlesPagination) {
+        data {
+            attributes {
+                title
+                description
+                createdAt
+                author {
+                    data {
+                        attributes {
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
