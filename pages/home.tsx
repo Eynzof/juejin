@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Home.module.css";
+import styles from "./home.module.css";
 import { Box } from "@mui/material";
 import { getMenus, queryClient } from "../src/api";
 import CheckIn from "../components/Home/CheckIn";
