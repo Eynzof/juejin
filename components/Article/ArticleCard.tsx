@@ -35,7 +35,7 @@ function ArticleCard() {
           }}
         >
           <Box className={styles.title__row}>
-            <Link href="#" underline="none" color={"text.secondary"}>
+            <Link href="#" underline="none" color={"text.primary"}>
               我的 2022 年，写书，房子，车子，晋升
             </Link>
           </Box>

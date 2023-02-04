@@ -17,6 +17,7 @@ import {
 } from "../src/store/headerSlice";
 import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
 import QRCode from "../src/components/Home/QRCode/QRCode";
+import Banner from "../src/components/Home/banner/Banner";
 
 export async function getServerSideProps() {
   // await testApi();
@@ -84,15 +85,15 @@ const Home: NextPageWithLayout = () => {
           <ArticleTab />
         </Box>
         <div className={styles.main__right}>
-          {/* =============== 签到 =============== */}
-          <CheckIn></CheckIn>
-          <div className={styles.author__info}></div>
-          <div className={styles.related__articles}>
-            <Box sx={{ color: "text.secondary" }}>相关文章</Box>
-          </div>
-          <div className={styles.table__of__contents}>
-            <Box sx={{ color: "text.secondary" }}>文章目录</Box>
-          </div>
+          <CheckIn />
+          <Banner />
+          {/*<div className={styles.author__info}></div>*/}
+          {/*<div className={styles.related__articles}>*/}
+          {/*  <Box sx={{ color: "text.secondary" }}>相关文章</Box>*/}
+          {/*</div>*/}
+          {/*<div className={styles.table__of__contents}>*/}
+          {/*  <Box sx={{ color: "text.secondary" }}>文章目录</Box>*/}
+          {/*</div>*/}
           <QRCode />
           <AuthorRank />
         </div>

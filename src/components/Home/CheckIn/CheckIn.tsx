@@ -16,7 +16,7 @@ function CheckIn() {
               fontSize: 16,
               lineHeight: "24px",
               fontWeight: "600",
-              color: "text.secondary",
+              color: "text.primary",
             }}
           >
             晚上好!
