@@ -46,6 +46,15 @@ const lightThemeOptions: ThemeOptions = {
       "Arial",
     ].join(","),
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 345,
+      md: 720,
+      lg: 1000,
+      xl: 1536,
+    },
+  },
 };
 
 export default lightThemeOptions;
