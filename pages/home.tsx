@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { Box } from "@mui/material";
 import { getMenus, queryClient } from "../src/api";
-import CheckIn from "../components/Home/CheckIn";
+import CheckIn from "../src/components/Home/CheckIn/CheckIn";
 import TopHeader from "../components/Header/TopHeader";
 import BottomHeader from "../components/Header/BottomHeader";
 import ArticleTab from "../components/Article/ArticleTab";
 import { dehydrate } from "react-query";
 import sampleMenuData from "../resources/MenuResponse.json";
+import { NextPageWithLayout } from "./_app";
+import Layout from "../src/components/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectHeaderCollapsed,
+  setHeaderState,
+} from "../src/store/headerSlice";
+import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
+import QRCode from "../src/components/Home/QRCode/QRCode";
+import Banner from "../src/components/Home/banner/Banner";
 
 export async function getServerSideProps() {
   // await testApi();
@@ -33,8 +43,9 @@ export async function getServerSideProps() {
   };
 }
 
-const Home = () => {
-  const [headerCollapsed, setHeaderCollapsed] = useState(false);
+const Home: NextPageWithLayout = () => {
+  const dispatch = useDispatch();
+  const headerCollapsed = useSelector(selectHeaderCollapsed);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -43,11 +54,14 @@ const Home = () => {
     };
   }, []);
 
+  const top = headerCollapsed ? "0" : "0";
+  const position = headerCollapsed ? "fixed" : "relative";
+
   const handleScroll = () => {
     if (window.pageYOffset > 50) {
-      setHeaderCollapsed(true);
+      dispatch(setHeaderState(true));
     } else {
-      setHeaderCollapsed(false);
+      dispatch(setHeaderState(false));
     }
   };
 
@@ -55,18 +69,12 @@ const Home = () => {
     <div className={styles.home__container}>
       <Box
         className={styles.header}
-        sx={{ backgroundColor: "background.paper" }}
+        sx={{
+          backgroundColor: "background.paper",
+          top: { top },
+          position: { position },
+        }}
       >
-        <Box
-          sx={{ borderBottom: 1, borderColor: "divider" }}
-          className={`${styles.header__top} ${
-            headerCollapsed ? styles.collapsed : ""
-          }`}
-        >
-          {/* =============== Top TopHeader =============== */}
-          <TopHeader />
-        </Box>
-        {/* =============== Bottom TopHeader =============== */}
         <BottomHeader />
       </Box>
       <main className={styles.main}>
@@ -75,30 +83,27 @@ const Home = () => {
           sx={{ backgroundColor: "background.paper" }}
         >
           <ArticleTab />
-          {/*<ArticleNavigation />*/}
-          {/*<ArticleCard></ArticleCard>*/}
-
-          {/*{articles.map((article) => (*/}
-          {/*  <div key={article.id}>*/}
-          {/*    <h2>{article.title}</h2>*/}
-          {/*    <p>{article.content}</p>*/}
-          {/*  </div>*/}
-          {/*))}*/}
         </Box>
         <div className={styles.main__right}>
-          {/* =============== 签到 =============== */}
-          <CheckIn></CheckIn>
-          <div className={styles.author__info}></div>
-          <div className={styles.related__articles}>
-            <Box sx={{ color: "text.secondary" }}>相关文章</Box>
-          </div>
-          <div className={styles.table__of__contents}>
-            <Box sx={{ color: "text.secondary" }}>文章目录</Box>
-          </div>
+          <CheckIn />
+          <Banner />
+          {/*<div className={styles.author__info}></div>*/}
+          {/*<div className={styles.related__articles}>*/}
+          {/*  <Box sx={{ color: "text.secondary" }}>相关文章</Box>*/}
+          {/*</div>*/}
+          {/*<div className={styles.table__of__contents}>*/}
+          {/*  <Box sx={{ color: "text.secondary" }}>文章目录</Box>*/}
+          {/*</div>*/}
+          <QRCode />
+          <AuthorRank />
         </div>
       </main>
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;

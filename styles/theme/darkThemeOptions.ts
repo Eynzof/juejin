@@ -8,6 +8,7 @@ const darkThemeOptions: ThemeOptions = {
     mode: "dark",
     primary: {
       // light: will be calculated from palette.primary.main,
+      light: "#007fff",
       main: "#1e80ff",
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main

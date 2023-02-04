@@ -1,6 +1,13 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { alpha, IconButton, InputBase, styled } from "@mui/material";
+import {
+  alpha,
+  Avatar,
+  Button,
+  IconButton,
+  InputBase,
+  styled,
+} from "@mui/material";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
@@ -8,11 +15,13 @@ import { switchTheme } from "../../src/store/themeSlice";
 import { useDispatch } from "react-redux";
 
 import styles from "./Operations.module.css";
+import { width } from "@mui/system";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  border: "1px solid",
+  borderColor: "#c2c8d1",
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
@@ -69,6 +78,10 @@ function Operations() {
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
+      <Button variant="contained" sx={{ margin: "0 20px" }} disableElevation>
+        创作者中心
+      </Button>
+
       <IconButton
         onClick={toggleTheme}
         color="primary"
@@ -80,6 +93,12 @@ function Operations() {
       <IconButton color="primary" aria-label="notifications">
         <NotificationsIcon />
       </IconButton>
+
+      <Avatar
+        alt="Remy Sharp"
+        src="./avatar.jpg"
+        sx={{ width: 36, height: 36, marginLeft: "10px" }}
+      />
     </div>
   );
 }

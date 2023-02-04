@@ -4,16 +4,11 @@
 
 /*=============== TopHeader ===============*/
 .header {
-    position: fixed;
-    top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
 }
 
-.header__top {
-    transition: all 0.3s ease;
-}
 
 .header__bottom {
     height: 46px;
@@ -30,20 +25,12 @@
 
 /*=============== MAIN ===============*/
 .main {
-    margin: 120px auto 0;
+    margin: 20px auto 0;
     max-width: 960px;
     display: grid;
     grid-template-columns: 700px 240px;
     grid-column-gap: 20px;
 }
-
-
-/*.collapsed {*/
-/*.header__top {*/
-/*    height: 0;*/
-/*    overflow: hidden;*/
-/*}*/
-/*}*/
 
 .collapsed {
     height: 0;
