@@ -8,7 +8,10 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUp";
 import ForumOutlinedIcon from "@mui/icons-material/Forum";
 import { useRouter } from "next/router";
 
-function ArticleCard() {
+function ArticleCard(article: any) {
+  console.log(article.article);
+  const a = article.article;
+
   const router = useRouter();
   return (
     <Container className={styles.article__card}>
@@ -17,12 +20,12 @@ function ArticleCard() {
         sx={{ color: "text.secondary" }}
       >
         <Link href="/post_detail/123" underline="none" color={"text.secondary"}>
-          Enzo
+          {a.attributes.author.data.attributes.name}
         </Link>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <div className={styles.meta__date}>26天前</div>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <div>年终总结</div>
+        {a && a.attributes.category.data.attributes.name}
       </Container>
       <Box
         className={styles.content__wrapper}
@@ -40,7 +43,7 @@ function ArticleCard() {
               underline="none"
               color={"text.primary"}
             >
-              我的 2022 年，写书，房子，车子，晋升
+              {a && a.attributes.title}
             </Link>
           </Box>
           <div className={styles.abstract}>
@@ -50,8 +53,7 @@ function ArticleCard() {
               color={"text.disabled"}
               fontSize={"13px"}
             >
-              用 4 个关键词总结 2022
-              年——我的技术书和我的晋升，所以这篇年终总结以我的 2022 年为题。
+              {a.attributes.description}
             </Link>
           </div>
           <div className={styles.action__list}>

@@ -34,10 +34,12 @@ type Article {
     cover: UploadFileEntityResponse
     createdAt: DateTime
     description: String
+    likes: Int
     publishedAt: DateTime
     slug: String
     title: String
     updatedAt: DateTime
+    views: Int
 }
 
 type ArticleEntity {
@@ -514,12 +516,14 @@ input ArticleFiltersInput {
     createdAt: DateTimeFilterInput
     description: StringFilterInput
     id: IDFilterInput
+    likes: IntFilterInput
     not: ArticleFiltersInput
     or: [ArticleFiltersInput]
     publishedAt: DateTimeFilterInput
     slug: StringFilterInput
     title: StringFilterInput
     updatedAt: DateTimeFilterInput
+    views: IntFilterInput
 }
 
 input ArticleInput {
@@ -528,9 +532,11 @@ input ArticleInput {
     category: ID
     cover: ID
     description: String
+    likes: Int
     publishedAt: DateTime
     slug: String
     title: String
+    views: Int
 }
 
 input AuthorFiltersInput {

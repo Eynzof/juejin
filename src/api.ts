@@ -7,7 +7,7 @@ const gqlClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API_URL);
 
 export { gqlClient };
 
-export const { getMenus } = getSdk(gqlClient);
+export const { getMenus, getArticles } = getSdk(gqlClient);
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

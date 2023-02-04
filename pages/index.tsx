@@ -1,12 +1,14 @@
 import React, { ReactElement, useEffect } from "react";
 import styles from "./index.module.css";
 import { Box } from "@mui/material";
-import { getMenus, queryClient } from "../src/api";
+import { getMenus, getArticles, queryClient } from "../src/api";
 import CheckIn from "../src/components/Home/CheckIn/CheckIn";
 import BottomHeader from "../src/components/Header/BottomHeader";
 import ArticleTab from "../src/components/Article/ArticleTab";
 import { dehydrate } from "react-query";
 import sampleMenuData from "../src/data/MenuResponse.json";
+import sampleArticleData from "../src/data/getArticles.json";
+
 import { NextPageWithLayout } from "./_app";
 import Layout from "../src/components/Layout";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,22 +18,35 @@ import {
 } from "../src/store/headerSlice";
 import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
 import QRCode from "../src/components/Home/QRCode/QRCode";
-import Banner from "../src/components/Home/banner/Banner";
+import Banner from "../src/components/Home/Banner/Banner";
+import { varArticles } from "../src/graphql/variables";
 
 export async function getServerSideProps() {
-  // await testApi();
-
   await queryClient.prefetchQuery(["menus"], async () => {
     try {
       return await getMenus();
     } catch (error) {
-      console.log(
-        "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地数据"
+      console.warn(
+        "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地 Menu 数据"
       );
-      console.error(error);
+      // console.error(error);
 
       // 使用本地数据
       return sampleMenuData;
+    }
+  });
+
+  await queryClient.prefetchQuery(["articles"], async () => {
+    try {
+      return await getArticles(varArticles);
+    } catch (error) {
+      console.warn(
+        "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地 Article 数据"
+      );
+      // console.error(error);
+
+      // 使用本地数据
+      return sampleArticleData;
     }
   });
 

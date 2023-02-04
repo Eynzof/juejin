@@ -21,6 +21,8 @@ query getArticles($pagination: PaginationArg) {
                         }
                     }
                 }
+                likes
+                views
             }
         }
     }

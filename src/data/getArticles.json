@@ -1,0 +1,158 @@
+{
+  "data": {
+    "articles": {
+      "data": [
+        {
+          "id": "1",
+          "attributes": {
+            "title": "The internet's Own boy",
+            "description": "Follow the story of Aaron Swartz, the boy who could change the world",
+            "slug": "the-internet-s-own-boy",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "David Doe"
+                }
+              }
+            },
+            "publishedAt": "2023-01-26T05:21:49.698Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "story"
+                }
+              }
+            },
+            "likes": null,
+            "views": null
+          }
+        },
+        {
+          "id": "2",
+          "attributes": {
+            "title": "This shrimp is awesome",
+            "description": "Mantis shrimps, or stomatopods, are marine crustaceans of the order Stomatopoda.",
+            "slug": "this-shrimp-is-awesome",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "David Doe"
+                }
+              }
+            },
+            "publishedAt": "2023-01-26T05:21:51.287Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "nature"
+                }
+              }
+            },
+            "likes": null,
+            "views": null
+          }
+        },
+        {
+          "id": "3",
+          "attributes": {
+            "title": "A bug is becoming a meme on the internet",
+            "description": "How a bug on MySQL is becoming a meme on the internet",
+            "slug": "a-bug-is-becoming-a-meme-on-the-internet",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "Sarah Baker"
+                }
+              }
+            },
+            "publishedAt": "2023-01-26T05:21:52.993Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "tech"
+                }
+              }
+            },
+            "likes": null,
+            "views": null
+          }
+        },
+        {
+          "id": "4",
+          "attributes": {
+            "title": "Beautiful picture",
+            "description": "Description of a beautiful picture",
+            "slug": "beautiful-picture",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "Sarah Baker"
+                }
+              }
+            },
+            "publishedAt": "2023-01-26T05:21:54.687Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "nature"
+                }
+              }
+            },
+            "likes": null,
+            "views": null
+          }
+        },
+        {
+          "id": "5",
+          "attributes": {
+            "title": "What's inside a Black Hole",
+            "description": "Maybe the answer is in this article, or not...",
+            "slug": "what-s-inside-a-black-hole",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "Sarah Baker"
+                }
+              }
+            },
+            "publishedAt": "2023-01-26T05:21:56.291Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "news"
+                }
+              }
+            },
+            "likes": null,
+            "views": null
+          }
+        },
+        {
+          "id": "6",
+          "attributes": {
+            "title": "使用 Solidity、Web3 和 Vue.js 创建区块链游戏",
+            "description": "使用以太坊区块链构建去中心化游戏，游戏主题为三英占吕布，选择其中的角色铸造 NFT 与吕布进行战斗，",
+            "slug": "solidity-web3-vue-js",
+            "author": {
+              "data": {
+                "attributes": {
+                  "name": "天行无忌"
+                }
+              }
+            },
+            "publishedAt": "2023-02-04T08:10:17.938Z",
+            "category": {
+              "data": {
+                "attributes": {
+                  "name": "区块链"
+                }
+              }
+            },
+            "likes": 0,
+            "views": 0
+          }
+        }
+      ]
+    }
+  }
+}

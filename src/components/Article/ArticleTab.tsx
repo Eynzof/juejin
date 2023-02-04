@@ -4,6 +4,9 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ArticleCard from "./ArticleCard";
+import { useQuery } from "react-query";
+import { getArticles, getMenus } from "../../api";
+import { varArticles } from "../../graphql/variables";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -29,6 +32,11 @@ function TabPanel(props: TabPanelProps) {
 export default function ArticleTab() {
   const [value, setValue] = React.useState(0);
 
+  const r = useQuery(["articles"], () => getArticles(varArticles));
+
+  const articles = r.data.articles && r.data.articles.data;
+  // console.log(articles);
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -50,22 +58,10 @@ export default function ArticleTab() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        {articles &&
+          articles.map((article) => {
+            return <ArticleCard article={article} key={article.id} />;
+          })}
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ArticleCard />
