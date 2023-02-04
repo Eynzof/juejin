@@ -11,23 +11,6 @@ type Props = {
 };
 
 const Layout = ({ children, title = "稀土掘金" }: Props) => {
-  const [headerCollapsed, setHeaderCollapsed] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    if (window.pageYOffset > 50) {
-      setHeaderCollapsed(true);
-    } else {
-      setHeaderCollapsed(false);
-    }
-  };
-
   return (
     <div>
       <Head>
@@ -36,16 +19,8 @@ const Layout = ({ children, title = "稀土掘金" }: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header>
-        <Box
-          className={styles.header}
-          sx={{ backgroundColor: "background.paper" }}
-        >
-          <Box
-            sx={{ borderBottom: 1, borderColor: "divider" }}
-            className={`${styles.header__top} ${
-              headerCollapsed ? styles.collapsed : ""
-            }`}
-          >
+        <Box sx={{ backgroundColor: "background.paper" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TopHeader />
           </Box>
         </Box>

@@ -1,15 +1,20 @@
-import React, {ReactElement, useEffect, useState} from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import styles from "./home.module.css";
-import {Box} from "@mui/material";
-import {getMenus, queryClient} from "../src/api";
+import { Box } from "@mui/material";
+import { getMenus, queryClient } from "../src/api";
 import CheckIn from "../components/Home/CheckIn";
 import TopHeader from "../components/Header/TopHeader";
 import BottomHeader from "../components/Header/BottomHeader";
 import ArticleTab from "../components/Article/ArticleTab";
-import {dehydrate} from "react-query";
+import { dehydrate } from "react-query";
 import sampleMenuData from "../resources/MenuResponse.json";
-import {NextPageWithLayout} from "./_app";
+import { NextPageWithLayout } from "./_app";
 import Layout from "../src/components/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectHeaderCollapsed,
+  setHeaderState,
+} from "../src/store/headerSlice";
 
 export async function getServerSideProps() {
   // await testApi();
@@ -36,7 +41,8 @@ export async function getServerSideProps() {
 }
 
 const Home: NextPageWithLayout = () => {
-  const [headerCollapsed, setHeaderCollapsed] = useState(false);
+  const dispatch = useDispatch();
+  const headerCollapsed = useSelector(selectHeaderCollapsed);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -45,13 +51,14 @@ const Home: NextPageWithLayout = () => {
     };
   }, []);
 
-  const top = headerCollapsed ? "0" : "60px";
+  const top = headerCollapsed ? "0" : "0";
+  const position = headerCollapsed ? "fixed" : "relative";
 
   const handleScroll = () => {
     if (window.pageYOffset > 50) {
-      setHeaderCollapsed(true);
+      dispatch(setHeaderState(true));
     } else {
-      setHeaderCollapsed(false);
+      dispatch(setHeaderState(false));
     }
   };
 
@@ -59,26 +66,30 @@ const Home: NextPageWithLayout = () => {
     <div className={styles.home__container}>
       <Box
         className={styles.header}
-        sx={{backgroundColor: "background.paper", top: {top}}}
+        sx={{
+          backgroundColor: "background.paper",
+          top: { top },
+          position: { position },
+        }}
       >
-        <BottomHeader/>
+        <BottomHeader />
       </Box>
       <main className={styles.main}>
         <Box
           className={styles.main__left}
-          sx={{backgroundColor: "background.paper"}}
+          sx={{ backgroundColor: "background.paper" }}
         >
-          <ArticleTab/>
+          <ArticleTab />
         </Box>
         <div className={styles.main__right}>
           {/* =============== 签到 =============== */}
           <CheckIn></CheckIn>
           <div className={styles.author__info}></div>
           <div className={styles.related__articles}>
-            <Box sx={{color: "text.secondary"}}>相关文章</Box>
+            <Box sx={{ color: "text.secondary" }}>相关文章</Box>
           </div>
           <div className={styles.table__of__contents}>
-            <Box sx={{color: "text.secondary"}}>文章目录</Box>
+            <Box sx={{ color: "text.secondary" }}>文章目录</Box>
           </div>
         </div>
       </main>
