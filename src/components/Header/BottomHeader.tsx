@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./BottomHeader.module.css";
 import { Box, styled, Tab, Tabs } from "@mui/material";
-import { dehydrate, useQuery } from "react-query";
-import { getMenus, queryClient } from "../../src/api";
-import { sampleMenuData } from "../../src/data/Menus";
-import { sampleTaggedMenuData } from "../../src/data/TaggedMenus";
-
-interface StyledTabsProps {
-  children?: React.ReactNode;
-  value: number;
-  onChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
+import { useQuery } from "react-query";
+import { getMenus } from "../../api";
 
 interface StyledTabProps {
   label: string;
 }
-
-const AntTabs = styled(Tabs)({
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
-  },
-});
 
 const AntTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
@@ -64,32 +50,24 @@ const BottomHeader = () => {
       className={styles.header__bottom}
       sx={{ borderBottom: 1, borderColor: "divider" }}
     >
-      <Box width={720}>
-        <Tabs
-          value={currentTab}
-          onChange={handleTabSwitch}
-          aria-label="ant example"
-        >
-          {menus &&
-            menus.map((menu, index) => (
-              <AntTab
-                label={menu.name}
-                key={index}
-                sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
-              />
-            ))}
-        </Tabs>
-      </Box>
-      <Box
-        width={240}
-        sx={{
-          fontSize: 14,
-          paddingY: 0,
-          color: "text.disabled",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
+      <Tabs
+        value={currentTab}
+        onChange={handleTabSwitch}
+        aria-label="tabs"
+        className={styles.tabs__container}
+        variant="scrollable"
+        scrollButtons="auto"
       >
+        {menus &&
+          menus.map((menu, index) => (
+            <AntTab
+              label={menu.name}
+              key={index}
+              sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
+            />
+          ))}
+      </Tabs>
+      <Box color={"text.disabled"} className={styles.tag__management}>
         <p>标签管理</p>
       </Box>
     </Box>

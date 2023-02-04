@@ -1,25 +1,28 @@
 import { ThemeOptions } from "@mui/material/styles";
-import { amber } from "@mui/material/colors";
+import { deepOrange } from "@mui/material/colors";
 
-const lightThemeOptions: ThemeOptions = {
+import Logo from "../../../public/juejin_logo_dark.svg";
+
+const darkThemeOptions: ThemeOptions = {
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
       // light: will be calculated from palette.primary.main,
+      light: "#007fff",
       main: "#1e80ff",
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     background: {
-      default: "#f4f5f5",
-      paper: "#ffffff",
+      default: "#0e0e0e",
+      paper: "#121212",
     },
     text: {
-      primary: "#1d2129",
-      secondary: "#4e5969",
-      disabled: "#71777c",
+      primary: "#ffffff",
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
     },
-    divider: "#f1f1f1",
+    divider: "#181818",
     contrastThreshold: 3,
     // Used by the functions below to shift a color's luminance by approximately
     // two indexes within its tonal palette.
@@ -46,6 +49,15 @@ const lightThemeOptions: ThemeOptions = {
       "Arial",
     ].join(","),
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 350,
+      md: 768,
+      lg: 992,
+      xl: 1536,
+    },
+  },
 };
 
-export default lightThemeOptions;
+export default darkThemeOptions;

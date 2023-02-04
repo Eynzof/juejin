@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css";
-import TopHeader from "../../components/Header/TopHeader";
+import TopHeader from "./Header/TopHeader";
 
 type Props = {
   children?: ReactNode;
@@ -20,7 +20,15 @@ const Layout = ({ children, title = "稀土掘金" }: Props) => {
       </Head>
       <header>
         <Box sx={{ backgroundColor: "background.paper" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
             <TopHeader />
           </Box>
         </Box>

@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../src/components/Layout";
-import Home from "../home";
+import Home from "../index";
 import { NextPageWithLayout } from "../_app";
 
 const PostDetail: NextPageWithLayout = () => {
