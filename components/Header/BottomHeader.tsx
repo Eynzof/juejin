@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./BottomHeader.module.css";
 import { Box, styled, Tab, Tabs } from "@mui/material";
-import { dehydrate, useQuery } from "react-query";
-import { getMenus, queryClient } from "../../src/api";
-import { sampleMenuData } from "../../src/data/Menus";
-import { sampleTaggedMenuData } from "../../src/data/TaggedMenus";
-
-interface StyledTabsProps {
-  children?: React.ReactNode;
-  value: number;
-  onChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
+import { useQuery } from "react-query";
+import { getMenus } from "../../src/api";
 
 interface StyledTabProps {
   label: string;
 }
-
-const AntTabs = styled(Tabs)({
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
-  },
-});
 
 const AntTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
