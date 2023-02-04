@@ -7,10 +7,10 @@ import { Hydrate, QueryClientProvider } from "react-query";
 import { queryClient } from "../src/api";
 
 import createEmotionCache from "../src/utils/createEmotionCache";
-import lightThemeOptions from "../styles/theme/lightThemeOptions";
-import darkThemeOptions from "../styles/theme/darkThemeOptions";
+import lightThemeOptions from "../src/styles/theme/lightThemeOptions";
+import darkThemeOptions from "../src/styles/theme/darkThemeOptions";
 
-import "../styles/globals.css";
+import "../src/styles/globals.css";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
 import { ReactElement, ReactNode } from "react";
