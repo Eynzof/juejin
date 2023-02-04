@@ -13,11 +13,20 @@ import darkThemeOptions from "../styles/theme/darkThemeOptions";
 import "../styles/globals.css";
 import { wrapper } from "../src/store/store";
 import { selectTheme } from "../src/store/themeSlice";
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
+import { NextPage } from "next";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -25,9 +34,15 @@ const clientSideEmotionCache = createEmotionCache();
 const lightTheme = createTheme(lightThemeOptions);
 const darkTheme = createTheme(darkThemeOptions);
 
-const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
+const MyApp: React.FunctionComponent<MyAppProps> = ({
+  Component,
+  ...rest
+}: AppPropsWithLayout) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { emotionCache = clientSideEmotionCache, pageProps } = props;
+
+  // [Basic Features: Layouts | Next.js](https://nextjs.org/docs/basic-features/layouts)
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <ReduxProvider store={store}>
@@ -35,7 +50,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = ({ Component, ...rest }) => {
         <Hydrate state={pageProps.dehydratedState}>
           <CacheProvider value={emotionCache}>
             <ThemeWrapper>
-              <Component {...pageProps} />
+              {getLayout(<Component {...pageProps} />)}
             </ThemeWrapper>
           </CacheProvider>
         </Hydrate>
