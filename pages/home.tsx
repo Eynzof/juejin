@@ -75,15 +75,6 @@ const Home = () => {
           sx={{ backgroundColor: "background.paper" }}
         >
           <ArticleTab />
-          {/*<ArticleNavigation />*/}
-          {/*<ArticleCard></ArticleCard>*/}
-
-          {/*{articles.map((article) => (*/}
-          {/*  <div key={article.id}>*/}
-          {/*    <h2>{article.title}</h2>*/}
-          {/*    <p>{article.content}</p>*/}
-          {/*  </div>*/}
-          {/*))}*/}
         </Box>
         <div className={styles.main__right}>
           {/* =============== 签到 =============== */}
