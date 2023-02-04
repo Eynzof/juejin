@@ -1,0 +1,27 @@
+query getArticles($pagination: PaginationArg) {
+    articles(pagination: $pagination) {
+        data {
+            id
+            attributes {
+                title
+                description
+                slug
+                author {
+                    data {
+                        attributes {
+                            name
+                        }
+                    }
+                }
+                publishedAt
+                category {
+                    data {
+                        attributes {
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
