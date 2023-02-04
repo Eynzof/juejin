@@ -12,7 +12,13 @@ import Typography from "@mui/material/Typography";
 
 function AuthorRank() {
   return (
-    <Box sx={{ backgroundColor: "background.paper", width: "240px" }}>
+    <Box
+      sx={{
+        backgroundColor: "background.paper",
+        width: "240px",
+        boxShadow: "0 1px 2px 0 rgb(0 0 0 / 5%)",
+      }}
+    >
       <Box sx={{ padding: "12px 16px", fontSize: "14px" }}>🎖️作者榜</Box>
       <Divider />
       <List sx={{ width: "100%", maxWidth: 240, bgcolor: "background.paper" }}>
@@ -74,6 +80,18 @@ function AuthorRank() {
           />
         </ListItem>
       </List>
+      <Divider />
+      <Box
+        sx={{
+          color: "primary.light",
+          display: "flex",
+          justifyContent: "center",
+          fontSize: "14px",
+          padding: "12px 0",
+        }}
+      >
+        完整榜单 {">"}
+      </Box>
     </Box>
   );
 }

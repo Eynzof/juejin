@@ -6,9 +6,13 @@ function CheckIn() {
     <div>
       <Box
         display={"flex"}
-        bgcolor={"background.paper"}
         padding={"16px"}
         justifyContent={"space-between"}
+        sx={{
+          backgroundColor: "background.paper",
+          width: "240px",
+          boxShadow: "0 1px 2px 0 rgb(0 0 0 / 5%)",
+        }}
       >
         <Box>
           <Box

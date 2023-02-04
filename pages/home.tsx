@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { Box } from "@mui/material";
 import { getMenus, queryClient } from "../src/api";
-import CheckIn from "../components/Home/CheckIn";
+import CheckIn from "../src/components/Home/CheckIn/CheckIn";
 import TopHeader from "../components/Header/TopHeader";
 import BottomHeader from "../components/Header/BottomHeader";
 import ArticleTab from "../components/Article/ArticleTab";
@@ -15,7 +15,7 @@ import {
   selectHeaderCollapsed,
   setHeaderState,
 } from "../src/store/headerSlice";
-import AuthorRank from "../src/components/AuthorRank/AuthorRank";
+import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
 
 export async function getServerSideProps() {
   // await testApi();
