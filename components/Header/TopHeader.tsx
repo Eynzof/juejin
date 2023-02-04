@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Link } from "@mui/material";
+import { Box, Link, useMediaQuery, useTheme } from "@mui/material";
 import styles from "./TopHeader.module.css";
 import JueJinLogo from "./JueJinLogo";
 import Operations from "./Operations";
@@ -11,7 +11,9 @@ const TopHeader = () => {
   const menus_result = useQuery(["menus"], () => getMenus());
   const menus =
     menus_result.data && menus_result.data.menu.data.attributes.data;
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  console.log(matches);
   return (
     <div className={styles.header__container}>
       <JueJinLogo />

@@ -20,7 +20,15 @@ const Layout = ({ children, title = "稀土掘金" }: Props) => {
       </Head>
       <header>
         <Box sx={{ backgroundColor: "background.paper" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
             <TopHeader />
           </Box>
         </Box>

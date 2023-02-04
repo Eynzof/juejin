@@ -50,32 +50,24 @@ const BottomHeader = () => {
       className={styles.header__bottom}
       sx={{ borderBottom: 1, borderColor: "divider" }}
     >
-      <Box width={720}>
-        <Tabs
-          value={currentTab}
-          onChange={handleTabSwitch}
-          aria-label="ant example"
-        >
-          {menus &&
-            menus.map((menu, index) => (
-              <AntTab
-                label={menu.name}
-                key={index}
-                sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
-              />
-            ))}
-        </Tabs>
-      </Box>
-      <Box
-        width={240}
-        sx={{
-          fontSize: 14,
-          paddingY: 0,
-          color: "text.disabled",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
+      <Tabs
+        value={currentTab}
+        onChange={handleTabSwitch}
+        aria-label="tabs"
+        className={styles.tabs__container}
+        variant="scrollable"
+        scrollButtons="auto"
       >
+        {menus &&
+          menus.map((menu, index) => (
+            <AntTab
+              label={menu.name}
+              key={index}
+              sx={{ fontSize: 14, paddingX: "12px", paddingY: 0 }}
+            />
+          ))}
+      </Tabs>
+      <Box color={"text.disabled"} className={styles.tag__management}>
         <p>标签管理</p>
       </Box>
     </Box>
