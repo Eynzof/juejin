@@ -39,7 +39,7 @@ describe("GraphQL endpoint", () => {
     });
 
     const axios = require("axios");
-    const ax = axios.create({ httpsAgent });
+    const ax = axios.create({httpsAgent});
 
     const response = await ax({
       url,
@@ -51,3 +51,5 @@ describe("GraphQL endpoint", () => {
     console.log(response.data);
   });
 });
+
+export {}
