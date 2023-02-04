@@ -15,6 +15,7 @@ import {
   selectHeaderCollapsed,
   setHeaderState,
 } from "../src/store/headerSlice";
+import AuthorRank from "../src/components/AuthorRank/AuthorRank";
 
 export async function getServerSideProps() {
   // await testApi();
@@ -91,6 +92,7 @@ const Home: NextPageWithLayout = () => {
           <div className={styles.table__of__contents}>
             <Box sx={{ color: "text.secondary" }}>文章目录</Box>
           </div>
+          <AuthorRank />
         </div>
       </main>
     </div>
