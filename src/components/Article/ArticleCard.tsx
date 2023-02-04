@@ -16,11 +16,7 @@ function ArticleCard() {
         className={styles.meta__container}
         sx={{ color: "text.secondary" }}
       >
-        <Link
-          href="src/components/Article#"
-          underline="none"
-          color={"text.secondary"}
-        >
+        <Link href="/post_detail/123" underline="none" color={"text.secondary"}>
           Enzo
         </Link>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
@@ -40,7 +36,7 @@ function ArticleCard() {
         >
           <Box className={styles.title__row}>
             <Link
-              href="src/components/Article#"
+              href="/post_detail/123"
               underline="none"
               color={"text.primary"}
             >
@@ -49,7 +45,7 @@ function ArticleCard() {
           </Box>
           <div className={styles.abstract}>
             <Link
-              href="src/components/Article#"
+              href="/post_detail/123"
               underline="none"
               color={"text.disabled"}
               fontSize={"13px"}

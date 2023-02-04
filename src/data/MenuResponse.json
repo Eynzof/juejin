@@ -5,51 +5,51 @@
         "data": [
           {
             "name": "首页",
-            "url": "http://example.com/home",
+            "url": "/",
             "isActive": false
           },
           {
             "name": "沸点",
-            "url": "http://example.com/hot",
+            "url": "https://juejin.cn/pins",
             "isActive": false
           },
           {
             "name": "课程上新",
-            "url": "http://example.com/courses/new",
+            "url": "https://juejin.cn/course",
             "isActive": false
           },
           {
             "name": "直播",
-            "url": "http://example.com/live",
+            "url": "https://juejin.cn/live",
             "isActive": false
           },
           {
             "name": "活动",
-            "url": "http://example.com/events",
+            "url": "https://juejin.cn/events/all",
             "isActive": false
           },
           {
             "name": "竞赛",
-            "url": "http://example.com/competitions",
+            "url": "https://juejin.cn/challenge",
             "isActive": false
           },
           {
             "name": "商城",
-            "url": "http://example.com/store",
+            "url": "https://detail.youzan.com/show/goods/newest?kdt_id=104340304",
             "isActive": false
           },
           {
             "name": "APP",
-            "url": "http://example.com/app",
+            "url": "https://juejin.cn/app?utm_source=jj_nav",
             "isActive": false
           },
           {
             "name": "插件",
-            "url": "http://example.com/plugins",
+            "url": "https://juejin.cn/extension?utm_source=jj_nav",
             "isActive": false
           },
           {
-            "name": "本地模式",
+            "name": "在线模式",
             "url": "http://example.com/plugins",
             "isActive": false
           }
