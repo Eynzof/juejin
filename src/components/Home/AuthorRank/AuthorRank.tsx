@@ -9,16 +9,11 @@ import {
   ListItemText,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import SnippetContainer from "../../Universal/SnippetContainer";
 
 function AuthorRank() {
   return (
-    <Box
-      sx={{
-        backgroundColor: "background.paper",
-        width: "240px",
-        boxShadow: "0 1px 2px 0 rgb(0 0 0 / 5%)",
-      }}
-    >
+    <SnippetContainer>
       <Box sx={{ padding: "12px 16px", fontSize: "14px" }}>🎖️作者榜</Box>
       <Divider />
       <List sx={{ width: "100%", maxWidth: 240, bgcolor: "background.paper" }}>
@@ -92,7 +87,7 @@ function AuthorRank() {
       >
         完整榜单 {">"}
       </Box>
-    </Box>
+    </SnippetContainer>
   );
 }
 

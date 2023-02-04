@@ -16,6 +16,7 @@ import {
   setHeaderState,
 } from "../src/store/headerSlice";
 import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
+import QRCode from "../src/components/Home/QRCode/QRCode";
 
 export async function getServerSideProps() {
   // await testApi();
@@ -92,6 +93,7 @@ const Home: NextPageWithLayout = () => {
           <div className={styles.table__of__contents}>
             <Box sx={{ color: "text.secondary" }}>文章目录</Box>
           </div>
+          <QRCode />
           <AuthorRank />
         </div>
       </main>

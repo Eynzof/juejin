@@ -1,18 +1,14 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
+import SnippetContainer from "../../Universal/SnippetContainer";
 
 function CheckIn() {
   return (
     <div>
-      <Box
+      <SnippetContainer
         display={"flex"}
         padding={"16px"}
         justifyContent={"space-between"}
-        sx={{
-          backgroundColor: "background.paper",
-          width: "240px",
-          boxShadow: "0 1px 2px 0 rgb(0 0 0 / 5%)",
-        }}
       >
         <Box>
           <Box
@@ -32,7 +28,7 @@ function CheckIn() {
         <Button variant="outlined" size="small">
           去签到
         </Button>
-      </Box>
+      </SnippetContainer>
     </div>
   );
 }
