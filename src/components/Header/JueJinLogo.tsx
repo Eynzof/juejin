@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Logo.module.css";
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../src/store/themeSlice";
+import { selectTheme } from "../../store/themeSlice";
 
 function JueJinLogo() {
   const isLight = useSelector(selectTheme);

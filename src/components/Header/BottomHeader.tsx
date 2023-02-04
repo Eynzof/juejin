@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./BottomHeader.module.css";
 import { Box, styled, Tab, Tabs } from "@mui/material";
 import { useQuery } from "react-query";
-import { getMenus } from "../../src/api";
+import { getMenus } from "../../api";
 
 interface StyledTabProps {
   label: string;

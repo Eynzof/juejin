@@ -12,8 +12,8 @@ import styles from "./TopHeader.module.css";
 import JueJinLogo from "./JueJinLogo";
 import Operations from "./Operations";
 import { useQuery } from "react-query";
-import { getMenus } from "../../src/api";
-import menus from "../../pages/api/menus";
+import { getMenus } from "../../api";
+import menus from "../../../pages/api/menus";
 
 const TopHeader = () => {
   const menus_result = useQuery(["menus"], () => getMenus());

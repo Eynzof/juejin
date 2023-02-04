@@ -11,7 +11,7 @@ import {
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
-import { switchTheme } from "../../src/store/themeSlice";
+import { switchTheme } from "../../store/themeSlice";
 import { useDispatch } from "react-redux";
 
 import styles from "./Operations.module.css";

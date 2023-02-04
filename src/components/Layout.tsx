@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css";
-import TopHeader from "../../components/Header/TopHeader";
+import TopHeader from "./Header/TopHeader";
 
 type Props = {
   children?: ReactNode;
