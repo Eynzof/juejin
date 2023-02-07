@@ -19,7 +19,7 @@ import {
 import AuthorRank from "../src/components/Home/AuthorRank/AuthorRank";
 import QRCode from "../src/components/Home/QRCode/QRCode";
 import Banner from "../src/components/Home/Banner/Banner";
-import { varArticles } from "../src/graphql/variables";
+import { varOfArticles } from "../src/graphql/variables";
 
 export async function getServerSideProps() {
   await queryClient.prefetchQuery(["menus"], async () => {
@@ -38,7 +38,7 @@ export async function getServerSideProps() {
 
   await queryClient.prefetchQuery(["articles"], async () => {
     try {
-      return await getArticles(varArticles);
+      return await getArticles(varOfArticles);
     } catch (error) {
       console.warn(
         "未能连接到GraphQL Endpoint。请检查后端是否启动，正在使用本地 Article 数据"
