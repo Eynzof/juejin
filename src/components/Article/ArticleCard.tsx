@@ -22,18 +22,10 @@ function ArticleCard(article: any) {
   const author = dataLoaded ? a.attributes.author.data.attributes.name : "";
   const publishedAt = dataLoaded ? a.attributes.publishedAt : "";
   const category = dataLoaded ? a.attributes.category.data.attributes.name : "";
-  const likes = dataLoaded
-    ? a.attributes.likes
-      ? a.attributes.likes
-      : "0"
-    : "0";
-  const views = dataLoaded
-    ? a.attributes.views
-      ? a.attributes.views
-      : "0"
-    : "0";
+  const likes = dataLoaded ? a.attributes.category.data.attributes.name : "0";
+  const views = dataLoaded ? a.attributes.category.data.attributes.name : "0";
   const comments = dataLoaded
-    ? a.attributes.comments(a.attributes.comments || "0")
+    ? a.attributes.category.data.attributes.name
     : "0";
 
   const router = useRouter();
