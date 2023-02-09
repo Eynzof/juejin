@@ -76,6 +76,16 @@ const TopHeader = () => {
         </div>
         <div className={styles.header__navlist}>
           <div className={styles.header__nav}>
+            {/*<Box sx={{ color: "text.default" }}>*/}
+            {/*  <Link*/}
+            {/*    href={""}*/}
+            {/*    className={styles.header__navlink}*/}
+            {/*    sx={{ color: "text.secondary" }}*/}
+            {/*  >*/}
+            {/*    课程*/}
+            {/*    <span className={styles.header__tablead}>上新</span>*/}
+            {/*  </Link>*/}
+            {/*</Box>*/}
             {menus &&
               menus.map((menu, index) => (
                 <Box sx={{ color: "text.default" }} key={index}>
@@ -85,6 +95,11 @@ const TopHeader = () => {
                     sx={{ color: "text.secondary" }}
                   >
                     {menu.name}
+                    {menu.isActive && (
+                      <span className={styles.header__tablead}>
+                        {menu.label}
+                      </span>
+                    )}
                   </Link>
                 </Box>
               ))}

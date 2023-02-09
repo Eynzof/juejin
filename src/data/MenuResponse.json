@@ -14,9 +14,10 @@
             "isActive": false
           },
           {
-            "name": "课程上新",
+            "name": "课程",
             "url": "https://juejin.cn/course",
-            "isActive": false
+            "isActive": true,
+            "label": "上新"
           },
           {
             "name": "直播",
@@ -31,7 +32,8 @@
           {
             "name": "竞赛",
             "url": "https://juejin.cn/challenge",
-            "isActive": false
+            "isActive": true,
+            "label": "码上报名"
           },
           {
             "name": "商城",
@@ -41,7 +43,8 @@
           {
             "name": "APP",
             "url": "https://juejin.cn/app?utm_source=jj_nav",
-            "isActive": false
+            "isActive": true,
+            "label": "邀请有礼"
           },
           {
             "name": "插件",

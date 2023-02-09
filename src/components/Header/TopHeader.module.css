@@ -27,6 +27,21 @@
     font-size: 14px;
     font-weight: 500;
 }
+.header__tablead{
+    position: absolute;
+    top:5px;
+    z-index: 9;
+    white-space: nowrap;
+    padding: 2px 7px;
+    background-color: #ee502f;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    transform: scale(.5);
+    line-height: 18px;
+    color: #fff;
+}
 
 .header__banner {
     height: 100%;
