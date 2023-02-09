@@ -7,7 +7,8 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUp";
 
 import ForumOutlinedIcon from "@mui/icons-material/Forum";
 import { useRouter } from "next/router";
-
+// import DateDisplay from "../../utils/timeDifference";
+import timeDifference from "../../utils/timeDifference";
 function ArticleCard(article: any) {
   console.log(article.article);
   const a = article.article;
@@ -40,7 +41,8 @@ function ArticleCard(article: any) {
             {author}
           </Link>
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-          <div className={styles.meta__date}>{publishedAt}</div>
+          <div className={styles.meta__date}>{timeDifference(publishedAt)}</div>
+          {/*<div className={styles.meta__date}>{publishedAt}</div>*/}
           <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           {category}
         </Container>
