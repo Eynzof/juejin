@@ -33,7 +33,7 @@ export default function ArticleTab() {
   const [selected, setSelected] = React.useState(0);
   const r = useQuery(["articles"], () => getArticles(varOfArticles));
 
-  const articles = r.data.articles && r.data.articles.data;
+  const articles = r.data.articles.data;
 
   const handleTabChange = (
     event: React.SyntheticEvent,
